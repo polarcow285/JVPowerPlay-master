@@ -1,7 +1,8 @@
 package org.firstinspires.ftc.teamcode.Projects;
-
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public abstract class Project {
     HardwareMap         hwMap   = null;
