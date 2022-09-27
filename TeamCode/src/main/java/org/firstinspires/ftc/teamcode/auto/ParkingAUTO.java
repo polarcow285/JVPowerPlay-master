@@ -4,10 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Projects.hi;
+@Autonomous(name = "ParkingAuto")
 
-@Autonomous(name = "TestAuto")
-public class TestAuto extends LinearOpMode {
-    //making a robot from project file (hardware map)
+public class ParkingAUTO extends LinearOpMode{
     public hi robot = new hi();
 
     @Override
@@ -28,13 +27,13 @@ public class TestAuto extends LinearOpMode {
         robot.bLeftWheel.setPower(0);
         //while(robot.right.isBusy()|| robot.left.isBusy()) {
 
-            //telemetry.addData("Status", robot.armMotor.getCurrentPosition());
-           // telemetry.update();
+        //telemetry.addData("Status", robot.armMotor.getCurrentPosition());
+        // telemetry.update();
         //}
 
 
 
     }
 }
-public class basicAuto {
-}
+
+
