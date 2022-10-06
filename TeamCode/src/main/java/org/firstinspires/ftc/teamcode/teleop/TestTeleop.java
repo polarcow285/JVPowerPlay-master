@@ -1,15 +1,22 @@
 package org.firstinspires.ftc.teamcode.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Projects.hi;
 
 public class TestTeleop extends LinearOpMode {
     public hi  robot = new hi();
 
+
     @Override
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
+        int liftstart = 0;
+        int liftend = 200;
+        robot.lift.setTargetPosition(0);
+        robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         waitForStart();
         boolean isSpinning = false;
@@ -38,6 +45,29 @@ public class TestTeleop extends LinearOpMode {
                 isSpinning = false;
 
             }
+
+            if (gamepad1.dpad_up == true){
+
+
+                robot.lift.setPower(1);
+                robot.lift.setTargetPosition(liftend);
+            }
+
+            if (gamepad1.dpad_down == true){
+
+                robot.lift.setPower(-1);
+                robot.lift.setTargetPosition(liftstart);
+
+            }
+            if(robot.lift.getTargetPosition()>200||robot.lift.getTargetPosition() < 0){
+
+                robot.lift.setPower(0);
+            }
+            telemetry.addData("Lift Encoder Count", robot.lift.getCurrentPosition());
+            telemetry.update();
+
+
+
 
 
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!

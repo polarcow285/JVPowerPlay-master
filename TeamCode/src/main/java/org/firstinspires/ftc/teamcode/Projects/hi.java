@@ -10,6 +10,7 @@ public class hi extends Project{
     public DcMotor bLeftWheel = null;
     public DcMotor bRightWheel = null;
     public DcMotor intake = null;
+    public DcMotor lift = null;
 
     @Override
     public void init(HardwareMap ahwMap) {
