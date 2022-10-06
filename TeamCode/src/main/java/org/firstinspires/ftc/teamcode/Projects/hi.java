@@ -21,6 +21,7 @@ public class hi extends Project{
         bLeftWheel = hwMap.dcMotor.get("bLeftWheel");
         bRightWheel = hwMap.dcMotor.get("bRightWheel");
         intake = hwMap.dcMotor.get("intake");
+        lift = hwMap.dcMotor.get("lift");
 
         // Motors and facing in to each other
         fRightWheel.setDirection(DcMotor.Direction.FORWARD);
@@ -28,18 +29,21 @@ public class hi extends Project{
         bRightWheel.setDirection(DcMotor.Direction.FORWARD);
         bLeftWheel.setDirection(DcMotor.Direction.REVERSE);
         intake.setDirection(DcMotor.Direction.FORWARD);
+        lift.setDirection(DcMotor.Direction.FORWARD);
 
         fRightWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         fLeftWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         bRightWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         bLeftWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         intake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        lift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         fRightWheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         fLeftWheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         bRightWheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         bLeftWheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         Stop();
     }
@@ -50,6 +54,7 @@ public class hi extends Project{
         bRightWheel.setPower(0);
         bLeftWheel.setPower(0);
         intake.setPower(0);
+        lift.setPower(0);
 
 
     }
