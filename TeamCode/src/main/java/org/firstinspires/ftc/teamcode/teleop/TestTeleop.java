@@ -65,10 +65,21 @@ public class TestTeleop extends LinearOpMode {
             }
             telemetry.addData("Lift Encoder Count", robot.lift.getCurrentPosition());
             telemetry.update();
+/*
+            // move the arms up and down
+            if (gamepad2.left_stick_y == true) {
+                robot.liftArmMotorThing.setPower(-gamepad2.left_stick_y);
+            }
 
+            // moves the manipulator (manipulatorMotor)
+            if (gamepad2.a == true) {
+                robot.manipulatorMotor.setPower(.2);
+            }
+            if (gamepad2.y == true) {
+                robot.manipulatorMotor.setPower(-.2);
+            }
 
-
-
+*/
 
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!
             double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
