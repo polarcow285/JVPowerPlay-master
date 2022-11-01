@@ -14,9 +14,9 @@ public class TestTeleop extends LinearOpMode {
         robot.init(hardwareMap);
         int liftstart = 0;
         int liftend = 200;
-        robot.lift.setTargetPosition(0);
-        robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //robot.lift.setTargetPosition(0);
+        //robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         waitForStart();
         boolean isSpinning = false;
@@ -35,7 +35,7 @@ public class TestTeleop extends LinearOpMode {
 
             }
             if (gamepad1.b==true&&isSpinning == false){
-                robot.intake.setPower(-1);
+               robot.intake.setPower(-1);
                 isSpinning = true;
 
 
@@ -46,25 +46,34 @@ public class TestTeleop extends LinearOpMode {
 
             }
 
-            if (gamepad1.dpad_up == true){
+           if (gamepad1.dpad_up == true){
 
 
                 robot.lift.setPower(1);
-                robot.lift.setTargetPosition(liftend);
+               // robot.lift.setTargetPosition(liftend);
             }
+           else{
+
+               robot.lift.setPower(0.25);
+           }
+        }
 
             if (gamepad1.dpad_down == true){
 
                 robot.lift.setPower(-1);
-                robot.lift.setTargetPosition(liftstart);
+                //robot.lift.setTargetPosition(liftstart);
 
             }
-            if(robot.lift.getTargetPosition()>200||robot.lift.getTargetPosition() < 0){
+            else{
 
-                robot.lift.setPower(0);
+                robot.lift.setPower(0.25);
             }
-            telemetry.addData("Lift Encoder Count", robot.lift.getCurrentPosition());
-            telemetry.update();
+           // if(robot.lift.getTargetPosition()>200||robot.lift.getTargetPosition() < 0){
+
+                //robot.lift.setPower(0);
+            //}
+            //telemetry.addData("Lift Encoder Count", robot.lift.getCurrentPosition());
+           // telemetry.update();
 /*
             // move the arms up and down
             if (gamepad2.left_stick_y == true) {
@@ -103,4 +112,6 @@ public class TestTeleop extends LinearOpMode {
 }
 //
 
+
+}
 
