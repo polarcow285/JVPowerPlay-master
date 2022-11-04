@@ -70,10 +70,7 @@ public class TestTeleop extends LinearOpMode {
                 //robot.lift.setTargetPosition(liftstart);
 
             }
-            else{
 
-                robot.lift.setPower(0.25);
-            }
         double y = -gamepad1.left_stick_y; // Remember, this is reversed!
         double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
         double rx = -gamepad1.right_stick_x;
