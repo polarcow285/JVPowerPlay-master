@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Projects;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class hi extends Project{
 
@@ -9,6 +10,8 @@ public class hi extends Project{
     public DcMotor fRightWheel = null;
     public DcMotor bLeftWheel = null;
     public DcMotor bRightWheel = null;
+    public Servo rClaw = null;
+    public Servo lClaw = null;
    // public DcMotor intake = null;
    // public DcMotor lift = null;
 
@@ -20,6 +23,8 @@ public class hi extends Project{
         fRightWheel = hwMap.dcMotor.get("fRightWheel");
         bLeftWheel = hwMap.dcMotor.get("bLeftWheel");
         bRightWheel = hwMap.dcMotor.get("bRightWheel");
+        rClaw = hwMap.servo.get("rClaw");
+        lClaw = hwMap.servo.get("lClaw");
        // intake = hwMap.dcMotor.get("intake"); //1
      //   lift = hwMap.dcMotor.get("lift"); //0
 
