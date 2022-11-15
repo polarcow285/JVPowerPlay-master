@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.teamcode.Projects.hi;
 @TeleOp(name = "TestTeleop")
 public class TestTeleop extends LinearOpMode {
-    public hi  robot = new hi();
+    public hi robot = new hi();
 
 
     @Override
@@ -29,88 +29,83 @@ public class TestTeleop extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            if (gamepad1.a==true&&isSpinning == false){
-                robot.intake.setPower(1);
-                isSpinning = true;
+            if (gamepad2.a == true ) {
+               // robot.intake.setPower(1);
+                //isSpinning = true;
 
 
             }
-            else if (gamepad1.a == true&&isSpinning == true){
-                robot.intake.setPower(0);
-                isSpinning = false;
+            else{
+
+                //robot.intake.setPower(0);
+            }
+            if (gamepad2.b == true ) {
+                //robot.intake.setPower(-1);
+               // isSpinning = true;
+
 
             }
-            if (gamepad1.b==true&&isSpinning == false){
-               robot.intake.setPower(-1);
-                isSpinning = true;
+            else{
 
-
-            }
-            else if (gamepad1.b == true&&isSpinning == true){
-                robot.intake.setPower(0);
-                isSpinning = false;
-
+                //robot.intake.setPower(0);
             }
 
-           if (gamepad1.dpad_up == true){
+            if (gamepad2.dpad_down == true) {
 
 
-                robot.lift.setPower(1);
-               // robot.lift.setTargetPosition(liftend);
+               // robot.lift.setPower(1);
+                // robot.lift.setTargetPosition(liftend);
             }
-           else{
+            if (gamepad2.dpad_up == true) {
 
-               robot.lift.setPower(0.25);
-           }
-        }
-
-            if (gamepad1.dpad_down == true){
-
-                robot.lift.setPower(-1);
+               // robot.lift.setPower(-1);
                 //robot.lift.setTargetPosition(liftstart);
 
+            } else {
+               // robot.lift.setPower(0);
             }
 
-        double y = -gamepad1.left_stick_y; // Remember, this is reversed!
-        double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
-        double rx = -gamepad1.right_stick_x;
 
-        // Denominator is the largest motor power (absolute value) or 1
-        // This ensures all the powers maintain the same ratio, but only when
-        // at least one is out of the range [-1, 1]
-        double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
-        double frontLeftPower = (y + x + rx) / denominator;
-        double backLeftPower = (y - x + rx) / denominator;
-        double frontRightPower = (y - x - rx) / denominator;
-        double backRightPower = (y + x - rx) / denominator;
+            double y = -gamepad1.left_stick_y; // Remember, this is reversed!
+            double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
+            double rx = -gamepad1.right_stick_x;
 
-        robot.fLeftWheel.setPower(frontLeftPower);
-        robot.bLeftWheel.setPower(backLeftPower);
-        robot.fRightWheel.setPower(frontRightPower);
-        robot.bRightWheel.setPower(backRightPower);
-           // if(robot.lift.getTargetPosition()>200||robot.lift.getTargetPosition() < 0){
+            // Denominator is the largest motor power (absolute value) or 1
+            // This ensures all the powers maintain the same ratio, but only when
+            // at least one is out of the range [-1, 1]
+            double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
+            double frontLeftPower = (y + x + rx) / denominator;
+            double backLeftPower = (y - x + rx) / denominator;
+            double frontRightPower = (y - x - rx) / denominator;
+            double backRightPower = (y + x - rx) / denominator;
 
-                //robot.lift.setPower(0);
+            robot.fLeftWheel.setPower(frontLeftPower);
+            robot.bLeftWheel.setPower(backLeftPower);
+            robot.fRightWheel.setPower(frontRightPower);
+            robot.bRightWheel.setPower(backRightPower);
+            // if(robot.lift.getTargetPosition()>200||robot.lift.getTargetPosition() < 0){
+
+            //robot.lift.setPower(0);
             //}
             //telemetry.addData("Lift Encoder Count", robot.lift.getCurrentPosition());
-           // telemetry.update();
+            // telemetry.update();
 
             // move the arms up and down
-         //   if (gamepad2.left_stick_y == true) {
-              //  robot.liftArmMotorThing.setPower(-gamepad2.left_stick_y);
-            }
-
-            // moves the manipulator (manipulatorMotor)
-    // if (gamepad2.a == true) {
-              //  robot.manipulatorMotor.setPower(.2);
-         //   }
-         //   if (gamepad2.y == true) {
-           //     robot.manipulatorMotor.setPower(-.2);
-          //  }
-
-
-
-
+            //   if (gamepad2.left_stick_y == true) {
+            //  robot.liftArmMotorThing.setPower(-gamepad2.left_stick_y);
         }
+
+        // moves the manipulator (manipulatorMotor)
+        // if (gamepad2.a == true) {
+        //  robot.manipulatorMotor.setPower(.2);
+        //   }
+        //   if (gamepad2.y == true) {
+        //     robot.manipulatorMotor.setPower(-.2);
+        //  }
+
+    }
+
+}
+
 
 
