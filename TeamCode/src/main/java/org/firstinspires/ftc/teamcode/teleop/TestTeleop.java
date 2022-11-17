@@ -30,17 +30,19 @@ public class TestTeleop extends LinearOpMode {
         while (opModeIsActive()) {
 
             if (gamepad2.a == true ) {
-               // robot.intake.setPower(1);
+               // rClaw.setPosition(1);
+                //lClaw.setPosition(1);
                 //isSpinning = true;
 
 
             }
-            else{
+           // else{
 
                 //robot.intake.setPower(0);
-            }
+            //}
             if (gamepad2.b == true ) {
-                //robot.intake.setPower(-1);
+                //rClaw.setPosition(0);
+                //lClaw.setPosition(0);
                // isSpinning = true;
 
 
