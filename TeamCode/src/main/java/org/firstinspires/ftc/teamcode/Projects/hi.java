@@ -29,7 +29,7 @@ public class hi extends Project{
      //   lift = hwMap.dcMotor.get("lift"); //0
 
         // Motors and facing in to each other
-        fRightWheel.setDirection(DcMotor.Direction.REVERSE);
+        fRightWheel.setDirection(DcMotor.Direction.FORWARD);
         fLeftWheel.setDirection(DcMotor.Direction.REVERSE);
         bRightWheel.setDirection(DcMotor.Direction.FORWARD);
         bLeftWheel.setDirection(DcMotor.Direction.REVERSE);
