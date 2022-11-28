@@ -25,6 +25,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.Projects.hi;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -35,6 +36,7 @@ import java.util.ArrayList;
 @TeleOp(name = "camera")
 public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends LinearOpMode
 {
+    public hi robot = new hi();
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
 
@@ -166,10 +168,47 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
         /* Actually do something useful */
         if(tagOfInterest == null || tagOfInterest.id == Left ) {
             //trajectory
+            robot.fRightWheel.setPower(1);
+            robot.fLeftWheel.setPower(1);
+            robot.bRightWheel.setPower(1);
+            robot.bLeftWheel.setPower(1);
+            sleep(7500);
+            robot.fRightWheel.setPower(0);
+            robot.fLeftWheel.setPower(0);
+            robot.bRightWheel.setPower(0);
+            robot.bLeftWheel.setPower(0);
         } else if(tagOfInterest.id == Middle) {
             //trajectory
+            robot.fRightWheel.setPower(1);
+            robot.fLeftWheel.setPower(1);
+            robot.bRightWheel.setPower(1);
+            robot.bLeftWheel.setPower(1);
+            sleep(7500);
+            robot.fRightWheel.setPower(0);
+            robot.fLeftWheel.setPower(0);
+            robot.bRightWheel.setPower(0);
+            robot.bLeftWheel.setPower(0);
+            sleep(1000);
+            robot.fRightWheel.setPower(1);
+            robot.fLeftWheel.setPower(-1);
+            robot.bRightWheel.setPower(1);
+            robot.bLeftWheel.setPower(-1);
         }else {
             //trajectory
+            robot.fRightWheel.setPower(1);
+            robot.fLeftWheel.setPower(1);
+            robot.bRightWheel.setPower(1);
+            robot.bLeftWheel.setPower(1);
+            sleep(7500);
+            robot.fRightWheel.setPower(0);
+            robot.fLeftWheel.setPower(0);
+            robot.bRightWheel.setPower(0);
+            robot.bLeftWheel.setPower(0);
+            sleep(1000);
+            robot.fRightWheel.setPower(-1);
+            robot.fLeftWheel.setPower(1);
+            robot.bRightWheel.setPower(-1);
+            robot.bLeftWheel.setPower(1);
         }
 
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
