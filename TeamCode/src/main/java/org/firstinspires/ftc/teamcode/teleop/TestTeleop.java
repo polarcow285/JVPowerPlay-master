@@ -30,8 +30,8 @@ public class TestTeleop extends LinearOpMode {
         while (opModeIsActive()) {
 
             if (gamepad2.a == true ) {
-               // rClaw.setPosition(1);
-                //lClaw.setPosition(1);
+                robot.rClaw.setPosition(1);
+                robot.lClaw.setPosition(0);
                 //isSpinning = true;
 
 
@@ -41,8 +41,8 @@ public class TestTeleop extends LinearOpMode {
                 //robot.intake.setPower(0);
             //}
             if (gamepad2.b == true ) {
-                //rClaw.setPosition(0);
-                //lClaw.setPosition(0);
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
                // isSpinning = true;
 
 
@@ -55,16 +55,16 @@ public class TestTeleop extends LinearOpMode {
             if (gamepad2.dpad_down == true) {
 
 
-               // robot.lift.setPower(1);
-                // robot.lift.setTargetPosition(liftend);
+               robot.lift.setPower(1);
+                robot.lift.setTargetPosition(liftend);
             }
             if (gamepad2.dpad_up == true) {
 
-               // robot.lift.setPower(-1);
+                robot.lift.setPower(-1);
                 //robot.lift.setTargetPosition(liftstart);
 
             } else {
-               // robot.lift.setPower(0);
+                robot.lift.setPower(0);
             }
 
 
