@@ -60,7 +60,7 @@ public class ParkingAUTO extends LinearOpMode{
             robot.bRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(1000);
+            sleep(2000);
             robot.fRightWheel.setPower(0);
             robot.bRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
@@ -69,20 +69,32 @@ public class ParkingAUTO extends LinearOpMode{
 
         }
         else{
-            robot.fRightWheel.setPower(0.5);
-            robot.bRightWheel.setPower(0.5);
-            robot.fLeftWheel.setPower(0);
-            robot.bLeftWheel.setPower(0);
-            sleep(1500);
+
             robot.fRightWheel.setPower(.5);
             robot.bRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(850);
+            sleep(2000);
             robot.fRightWheel.setPower(0);
             robot.bRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
             robot.bLeftWheel.setPower(0);
+           // robot.fRightWheel.setPower(0.5);
+           // robot.bRightWheel.setPower(0.5);
+            //robot.fLeftWheel.setPower(0);
+           // robot.bLeftWheel.setPower(0);
+            //sleep(1500);
+           // robot.fRightWheel.setPower(.5);
+           // robot.bRightWheel.setPower(.5);
+           // robot.fLeftWheel.setPower(.5);
+           // robot.bLeftWheel.setPower(.5);
+           // sleep(850);
+           // robot.fRightWheel.setPower(0);
+            //robot.bRightWheel.setPower(0);
+           // robot.fLeftWheel.setPower(0);
+           // robot.bLeftWheel.setPower(0);
+
+
         }
         //while(robot.right.isBusy()|| robot.left.isBusy()) {
 
