@@ -180,15 +180,15 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             sleep(1000);
             robot.fRightWheel.setPower(1);
             robot.fLeftWheel.setPower(-1);
-            robot.bRightWheel.setPower(1);
-            robot.bLeftWheel.setPower(-1);
+            robot.bRightWheel.setPower(-1);
+            robot.bLeftWheel.setPower(1);
 
         } else if(tagOfInterest.id == Middle) {
             //trajectory
             robot.fRightWheel.setPower(1);
             robot.fLeftWheel.setPower(1);
-            robot.bRightWheel.setPower(1);
-            robot.bLeftWheel.setPower(1);
+            robot.bRightWheel.setPower(-1);
+            robot.bLeftWheel.setPower(-1);
             sleep(7500);
             robot.fRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
@@ -210,8 +210,8 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             sleep(1000);
             robot.fRightWheel.setPower(-1);
             robot.fLeftWheel.setPower(1);
-            robot.bRightWheel.setPower(-1);
-            robot.bLeftWheel.setPower(1);
+            robot.bRightWheel.setPower(1);
+            robot.bLeftWheel.setPower(-1);
         }
 
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
