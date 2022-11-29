@@ -177,6 +177,12 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             robot.fLeftWheel.setPower(0);
             robot.bRightWheel.setPower(0);
             robot.bLeftWheel.setPower(0);
+            sleep(1000);
+            robot.fRightWheel.setPower(1);
+            robot.fLeftWheel.setPower(-1);
+            robot.bRightWheel.setPower(1);
+            robot.bLeftWheel.setPower(-1);
+
         } else if(tagOfInterest.id == Middle) {
             //trajectory
             robot.fRightWheel.setPower(1);
@@ -188,11 +194,8 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             robot.fLeftWheel.setPower(0);
             robot.bRightWheel.setPower(0);
             robot.bLeftWheel.setPower(0);
-            sleep(1000);
-            robot.fRightWheel.setPower(1);
-            robot.fLeftWheel.setPower(-1);
-            robot.bRightWheel.setPower(1);
-            robot.bLeftWheel.setPower(-1);
+
+
         }else {
             //trajectory
             robot.fRightWheel.setPower(1);
