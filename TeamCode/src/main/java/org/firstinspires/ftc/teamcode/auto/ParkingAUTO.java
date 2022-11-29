@@ -56,16 +56,11 @@ public class ParkingAUTO extends LinearOpMode{
         waitForStart(); //wait for play button to be pressed
         // autonomous happens here
         if (a == Parking.Right){
-            robot.fRightWheel.setPower(0);
-            robot.bRightWheel.setPower(0);
-            robot.fLeftWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1500);
             robot.fRightWheel.setPower(.5);
             robot.bRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(850);
+            sleep(1000);
             robot.fRightWheel.setPower(0);
             robot.bRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
