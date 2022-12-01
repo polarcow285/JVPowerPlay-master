@@ -21,7 +21,140 @@ public class TestTeleop extends LinearOpMode {
         int liftstart = 0;
         int liftend = 200;
         //robot.lift.setTargetPosition(0);
-        //robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.lift.setMode(DcMotor.RunMode.STOP_\]
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //AND_RESET_ENCODER);
         //robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         waitForStart();
@@ -29,7 +162,7 @@ public class TestTeleop extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            if (gamepad2.a == true ) {
+            if (gamepad1.a == true ) {
                 robot.rClaw.setPosition(1);
                 robot.lClaw.setPosition(0);
                 //isSpinning = true;
@@ -40,7 +173,7 @@ public class TestTeleop extends LinearOpMode {
 
                 //robot.intake.setPower(0);
             //}
-            if (gamepad2.b == true ) {
+            if (gamepad1.b == true ) {
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
                // isSpinning = true;
@@ -52,13 +185,13 @@ public class TestTeleop extends LinearOpMode {
                 //robot.intake.setPower(0);
             }
 
-            if (gamepad2.dpad_down == true) {
+            if (gamepad1.dpad_down == true) {
 
 
                robot.lift.setPower(1);
                 robot.lift.setTargetPosition(liftend);
             }
-            if (gamepad2.dpad_up == true) {
+            if (gamepad1.dpad_up == true) {
 
                 robot.lift.setPower(-1);
                 //robot.lift.setTargetPosition(liftstart);
