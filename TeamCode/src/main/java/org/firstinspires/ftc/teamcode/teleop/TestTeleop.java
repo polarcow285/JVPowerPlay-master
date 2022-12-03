@@ -21,140 +21,9 @@ public class TestTeleop extends LinearOpMode {
         int liftstart = 0;
         int liftend = 200;
         //robot.lift.setTargetPosition(0);
-        //robot.lift.setMode(DcMotor.RunMode.STOP_\]
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //AND_RESET_ENCODER);
+        //robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+
         //robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         waitForStart();
@@ -162,7 +31,7 @@ public class TestTeleop extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            if (gamepad1.a == true ) {
+            if (gamepad1.dpad_right == true ) {
                 robot.rClaw.setPosition(1);
                 robot.lClaw.setPosition(0);
                 //isSpinning = true;
@@ -173,7 +42,7 @@ public class TestTeleop extends LinearOpMode {
 
                 //robot.intake.setPower(0);
             //}
-            if (gamepad1.b == true ) {
+            if (gamepad1.dpad_left == true ) {
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
                // isSpinning = true;
@@ -189,17 +58,38 @@ public class TestTeleop extends LinearOpMode {
 
 
                robot.lift.setPower(1);
-                robot.lift.setTargetPosition(liftend);
+                //robot.lift.setTargetPosition(liftend);
             }
             if (gamepad1.dpad_up == true) {
 
                 robot.lift.setPower(-1);
                 //robot.lift.setTargetPosition(liftstart);
 
-            } else {
-                robot.lift.setPower(0);
+
+
             }
 
+            else {
+               robot.lift.setPower(0);
+           }
+
+            if (gamepad1.b == true){
+              //  robot.lift.setTargetPosition(0);
+
+            }
+            if (gamepad1.y == true){
+
+             //   robot.lift.setTargetPosition(-1800);
+            }
+
+            if(gamepad1.x == true){
+
+              //  robot.lift.setTargetPosition(-3000);
+            }
+            if (gamepad1.a == true){
+
+              // robot.lift.setTargetPosition(-5000);
+            }
 
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!
             double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
@@ -214,10 +104,10 @@ public class TestTeleop extends LinearOpMode {
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
 
-            robot.fLeftWheel.setPower(frontLeftPower);
-            robot.bLeftWheel.setPower(backLeftPower);
-            robot.fRightWheel.setPower(frontRightPower);
-            robot.bRightWheel.setPower(backRightPower);
+            robot.fLeftWheel.setPower(frontLeftPower*0.9);
+            robot.bLeftWheel.setPower(backLeftPower*0.9);
+            robot.fRightWheel.setPower(frontRightPower*0.9);
+            robot.bRightWheel.setPower(backRightPower*0.9);
             // if(robot.lift.getTargetPosition()>200||robot.lift.getTargetPosition() < 0){
 
             //robot.lift.setPower(0);

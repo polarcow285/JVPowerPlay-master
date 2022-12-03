@@ -169,28 +169,43 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
         /* Actually do something useful */
         if(tagOfInterest == null || tagOfInterest.id == Left ) {
             //trajectory
-            robot.fRightWheel.setPower(1);
-            robot.fLeftWheel.setPower(1);
-            robot.bRightWheel.setPower(1);
-            robot.bLeftWheel.setPower(1);
-            sleep(750);
+            robot.fRightWheel.setPower(.5);
+            robot.fLeftWheel.setPower(.5);
+            robot.bRightWheel.setPower(.5);
+            robot.bLeftWheel.setPower(.5);
+            sleep(2000);
             robot.fRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
             robot.bRightWheel.setPower(0);
             robot.bLeftWheel.setPower(0);
             sleep(1000);
-            robot.fRightWheel.setPower(1);
-            robot.fLeftWheel.setPower(-1);
-            robot.bRightWheel.setPower(-1);
-            robot.bLeftWheel.setPower(1);
+            robot.fRightWheel.setPower(.5);
+            robot.bRightWheel.setPower(.5);
+            robot.fLeftWheel.setPower(-.5);
+            robot.bLeftWheel.setPower(-.5);
+            sleep(2000);
+            robot.fRightWheel.setPower(.5);
+            robot.fLeftWheel.setPower(.5);
+            robot.bRightWheel.setPower(.5);
+            robot.bLeftWheel.setPower(.5);
+            sleep(2000);
+           // robot.fRightWheel.setPower(.3);
+           // robot.fLeftWheel.setPower(-.5);
+           // robot.bRightWheel.setPower(-.75);
+           // robot.bLeftWheel.setPower(.5);
+           // sleep(2300);
+            robot.fRightWheel.setPower(0);
+            robot.fLeftWheel.setPower(0);
+            robot.bRightWheel.setPower(0);
+            robot.bLeftWheel.setPower(0);
 
         } else if(tagOfInterest.id == Middle) {
             //trajectory
-            robot.fRightWheel.setPower(1);
-            robot.fLeftWheel.setPower(1);
-            robot.bRightWheel.setPower(-1);
-            robot.bLeftWheel.setPower(-1);
-            sleep(750);
+            robot.fRightWheel.setPower(.5);
+            robot.fLeftWheel.setPower(.5);
+            robot.bRightWheel.setPower(.5);
+            robot.bLeftWheel.setPower(.5);
+            sleep(2000);
             robot.fRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
             robot.bRightWheel.setPower(0);
@@ -199,20 +214,38 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
 
         }else {
             //trajectory
-            robot.fRightWheel.setPower(1);
-            robot.fLeftWheel.setPower(1);
-            robot.bRightWheel.setPower(1);
-            robot.bLeftWheel.setPower(1);
-            sleep(750);
+
+
+            robot.fRightWheel.setPower(.5);
+            robot.fLeftWheel.setPower(.5);
+            robot.bRightWheel.setPower(.5);
+            robot.bLeftWheel.setPower(.5);
+            sleep(2000);
             robot.fRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
             robot.bRightWheel.setPower(0);
             robot.bLeftWheel.setPower(0);
             sleep(1000);
-            robot.fRightWheel.setPower(-1);
-            robot.fLeftWheel.setPower(1);
-            robot.bRightWheel.setPower(1);
-            robot.bLeftWheel.setPower(-1);
+            robot.fRightWheel.setPower(-.5);
+            robot.bRightWheel.setPower(-.5);
+            robot.fLeftWheel.setPower(.5);
+            robot.bLeftWheel.setPower(.5);
+            sleep(2000);
+            robot.fRightWheel.setPower(.5);
+            robot.fLeftWheel.setPower(.5);
+            robot.bRightWheel.setPower(.5);
+            robot.bLeftWheel.setPower(.5);
+            sleep(2000);
+
+           // robot.fRightWheel.setPower(-.8);
+            //robot.fLeftWheel.setPower(.5);
+           // robot.bRightWheel.setPower(.5);
+            //robot.bLeftWheel.setPower(-.5);
+           // sleep(2300);
+            robot.fRightWheel.setPower(0);
+            robot.fLeftWheel.setPower(0);
+            robot.bRightWheel.setPower(0);
+            robot.bLeftWheel.setPower(0);
         }
 
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
