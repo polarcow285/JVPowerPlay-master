@@ -20,11 +20,14 @@ public class TestTeleop extends LinearOpMode {
         robot.init(hardwareMap);
         int liftstart = 0;
         int liftend = 200;
-        //robot.lift.setTargetPosition(0);
-        //robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        int noU = -5000;
+        double speed = .9;
+        boolean isSlow = false;
+        robot.lift.setTargetPosition(0);
+        robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
-        //robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         waitForStart();
         boolean isSpinning = false;
@@ -57,13 +60,24 @@ public class TestTeleop extends LinearOpMode {
             if (gamepad1.dpad_down == true) {
 
 
-               robot.lift.setPower(1);
+               //robot.lift.setPower(1);
                 //robot.lift.setTargetPosition(liftend);
+                if (noU<0) {
+
+
+                    noU = noU + 10;
+                }
+                robot.lift.setTargetPosition(noU);
             }
             if (gamepad1.dpad_up == true) {
 
-                robot.lift.setPower(-1);
+                //robot.lift.setPower(-1);
                 //robot.lift.setTargetPosition(liftstart);
+                if(noU>-5000){
+                    noU = noU-10;
+                }
+
+                robot.lift.setTargetPosition(noU);
 
 
 
@@ -74,22 +88,34 @@ public class TestTeleop extends LinearOpMode {
            }
 
             if (gamepad1.b == true){
-              //  robot.lift.setTargetPosition(0);
+                robot.lift.setTargetPosition(0);
 
             }
             if (gamepad1.y == true){
 
-             //   robot.lift.setTargetPosition(-1800);
+                robot.lift.setTargetPosition(-1800);
             }
 
             if(gamepad1.x == true){
 
-              //  robot.lift.setTargetPosition(-3000);
+               robot.lift.setTargetPosition(-3000);
             }
             if (gamepad1.a == true){
 
-              // robot.lift.setTargetPosition(-5000);
+              robot.lift.setTargetPosition(-5000);
             }
+
+            if (gamepad1.left_bumper == true){
+                isSlow = !isSlow;
+                if (isSlow == true) {
+                    speed = .5;
+                }
+                else {
+                    speed = .9;
+                }
+
+            }
+
 
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!
             double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
@@ -104,10 +130,10 @@ public class TestTeleop extends LinearOpMode {
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
 
-            robot.fLeftWheel.setPower(frontLeftPower*0.9);
-            robot.bLeftWheel.setPower(backLeftPower*0.9);
-            robot.fRightWheel.setPower(frontRightPower*0.9);
-            robot.bRightWheel.setPower(backRightPower*0.9);
+            robot.fLeftWheel.setPower(frontLeftPower*speed);
+            robot.bLeftWheel.setPower(backLeftPower*speed);
+            robot.fRightWheel.setPower(frontRightPower*speed);
+            robot.bRightWheel.setPower(backRightPower*speed);
             // if(robot.lift.getTargetPosition()>200||robot.lift.getTargetPosition() < 0){
 
             //robot.lift.setPower(0);

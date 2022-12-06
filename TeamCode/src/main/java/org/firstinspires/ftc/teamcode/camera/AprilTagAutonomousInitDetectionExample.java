@@ -183,7 +183,7 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             robot.bRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(-.5);
             robot.bLeftWheel.setPower(-.5);
-            sleep(2000);
+            sleep(1500);
             robot.fRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(.5);
             robot.bRightWheel.setPower(.5);
@@ -230,7 +230,7 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             robot.bRightWheel.setPower(-.5);
             robot.fLeftWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(2000);
+            sleep(1500);
             robot.fRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(.5);
             robot.bRightWheel.setPower(.5);
