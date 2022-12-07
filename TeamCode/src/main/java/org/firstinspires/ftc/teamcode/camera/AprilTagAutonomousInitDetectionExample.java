@@ -21,6 +21,7 @@
 
 package org.firstinspires.ftc.teamcode.camera;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -33,7 +34,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 
 import java.util.ArrayList;
 
-@TeleOp(name = "camera")
+@Autonomous(name = "camera")
 public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends LinearOpMode
 {
     public hi robot = new hi();
