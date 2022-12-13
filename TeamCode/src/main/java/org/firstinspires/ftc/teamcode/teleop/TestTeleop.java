@@ -60,61 +60,60 @@ public class TestTeleop extends LinearOpMode {
             if (gamepad1.dpad_down == true) {
 
 
-              //robot.lift.setPower(1);
-               // robot.lift.setTargetPosition(liftend);
+               //robot.lift.setPower(1);
+                //robot.lift.setTargetPosition(liftend);
                 if (noU<0) {
 
 
                     noU = noU + 10;
                 }
-                robot.lift.setPower(-1);
-              robot.lift.setTargetPosition(noU);
+                robot.lift.setTargetPosition(noU);
             }
             if (gamepad1.dpad_up == true) {
 
                 //robot.lift.setPower(-1);
                 //robot.lift.setTargetPosition(liftstart);
-
-               if(noU>-5000){
-                   noU = noU-10;
+                if(noU>-5000){
+                    noU = noU-10;
                 }
-                robot.lift.setPower(-1);
-               robot.lift.setTargetPosition(noU);
+
+                robot.lift.setTargetPosition(noU);
 
 
 
             }
 
             else {
-              // robot.lift.setPower(0);
+               robot.lift.setPower(0);
            }
 
             if (gamepad1.b == true){
-                robot.lift.setPower(1);
                 robot.lift.setTargetPosition(0);
 
-
-           }
+            }
             if (gamepad1.y == true){
-                robot.lift.setPower(-1);
-               robot.lift.setTargetPosition(-1800);
+
+                robot.lift.setTargetPosition(-1800);
             }
 
             if(gamepad1.x == true){
-                robot.lift.setPower(-1);
-              robot.lift.setTargetPosition(-3000);
+
+               robot.lift.setTargetPosition(-3000);
             }
             if (gamepad1.a == true){
-                robot.lift.setPower(-1);
+
               robot.lift.setTargetPosition(-5000);
             }
 
             if (gamepad1.left_bumper == true){
+                isSlow = !isSlow;
+                if (isSlow == true) {
                     speed = .5;
+                }
+                else {
+                    speed = .9;
+                }
 
-            }
-            else{
-                speed = .9;
             }
 
 

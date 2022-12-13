@@ -22,57 +22,6 @@ public class mechanum extends LinearOpMode {
         robot.init(hardwareMap);
         waitForStart();
         while (opModeIsActive()) {
-
-            if (gamepad1.dpad_right == true ) {
-                robot.rClaw.setPosition(1);
-                robot.lClaw.setPosition(0);
-                //isSpinning = true;
-
-
-            }
-            // else{
-
-            //robot.intake.setPower(0);
-            //}
-            if (gamepad1.dpad_left == true ) {
-                robot.rClaw.setPosition(0);
-                robot.lClaw.setPosition(1);
-                // isSpinning = true;
-
-
-            }
-
-            if (gamepad1.dpad_down == true) {
-
-
-                robot.lift.setPower(1);
-                // robot.lift.setTargetPosition(liftend);
-               // if (noU<0) {
-
-
-                  //  noU = noU + 10;
-                //}
-                //robot.lift.setPower(-1);
-                //robot.lift.setTargetPosition(noU);
-            }
-            if (gamepad1.dpad_up == true) {
-
-                robot.lift.setPower(-1);
-                //robot.lift.setTargetPosition(liftstart);
-
-               // if(noU>-5000){
-                  //  noU = noU-10;
-                //}
-                //robot.lift.setPower(-1);
-                //robot.lift.setTargetPosition(noU);
-
-
-
-            }
-            else{
-                robot.lift.setPower(0);
-            }
-
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!
             double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
             double rx = -gamepad1.right_stick_x;
