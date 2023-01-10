@@ -373,6 +373,44 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
         while (opModeIsActive()) {sleep(20);}
     }
 
+
+    void moveRobot(int numOfTiles, int speed) {
+        robot.fRightWheel.setPower(speed);
+        robot.fLeftWheel.setPower(speed);
+        robot.bRightWheel.setPower(speed);
+        robot.bLeftWheel.setPower(speed);
+        sleep(1600*speed*numOfTiles);
+        robot.fRightWheel.setPower(0);
+        robot.fLeftWheel.setPower(0);
+        robot.bRightWheel.setPower(0);
+        robot.bLeftWheel.setPower(0);
+
+    }
+
+    void turnRobot(String direction, int degrees) {
+        if (direction == "right") {
+            robot.fRightWheel.setPower(-.5);
+            robot.bRightWheel.setPower(-.5);
+            robot.fLeftWheel.setPower(.5);
+            robot.bLeftWheel.setPower(.5);
+            sleep(degrees/45*650);
+            robot.fRightWheel.setPower(0);
+            robot.fLeftWheel.setPower(0);
+            robot.bRightWheel.setPower(0);
+            robot.bLeftWheel.setPower(0);
+        }
+        if (direction == "left") {
+            robot.fRightWheel.setPower(.5);
+            robot.bRightWheel.setPower(.5);
+            robot.fLeftWheel.setPower(-.5);
+            robot.bLeftWheel.setPower(-.5);
+            sleep(degrees/45*650);
+            robot.fRightWheel.setPower(0);
+            robot.fLeftWheel.setPower(0);
+            robot.bRightWheel.setPower(0);
+            robot.bLeftWheel.setPower(0);
+        }
+    }
     void tagToTelemetry(AprilTagDetection detection)
     {
         telemetry.addLine(String.format("\nDetected tag ID=%d", detection.id));
