@@ -32,6 +32,7 @@ import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
+
 import java.util.ArrayList;
 
 @Autonomous(name = "camera")
@@ -170,11 +171,13 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
         /* Actually do something useful */
         if(tagOfInterest == null || tagOfInterest.id == Left ) {
             //trajectory
+            robot.rClaw.setPosition(0);
+            robot.lClaw.setPosition(1);
             robot.fRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(.5);
             robot.bRightWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(2000);
+            sleep(1600);
             robot.fRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
             robot.bRightWheel.setPower(0);
@@ -184,12 +187,12 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             robot.bRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(-.5);
             robot.bLeftWheel.setPower(-.5);
-            sleep(1500);
+            sleep(1000);
             robot.fRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(.5);
             robot.bRightWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(2000);
+            sleep(1150);
            // robot.fRightWheel.setPower(.3);
            // robot.fLeftWheel.setPower(-.5);
            // robot.bRightWheel.setPower(-.75);
@@ -202,11 +205,13 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
 
         } else if(tagOfInterest.id == Middle) {
             //trajectory
+            robot.rClaw.setPosition(0);
+            robot.lClaw.setPosition(1);
             robot.fRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(.5);
             robot.bRightWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(2000);
+            sleep(1600);
             robot.fRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
             robot.bRightWheel.setPower(0);
@@ -217,11 +222,13 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             //trajectory
 
 
+            robot.rClaw.setPosition(0);
+            robot.lClaw.setPosition(1);
             robot.fRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(.5);
             robot.bRightWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(2000);
+            sleep(1600);
             robot.fRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
             robot.bRightWheel.setPower(0);
@@ -231,12 +238,12 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             robot.bRightWheel.setPower(-.5);
             robot.fLeftWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(1500);
+            sleep(1300);
             robot.fRightWheel.setPower(.5);
             robot.fLeftWheel.setPower(.5);
             robot.bRightWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(2000);
+            sleep(1400);
 
            // robot.fRightWheel.setPower(-.8);
             //robot.fLeftWheel.setPower(.5);

@@ -60,8 +60,8 @@ public class hi extends Project{
         fLeftWheel.setPower(0);
         bRightWheel.setPower(0);
         bLeftWheel.setPower(0);
-        rClaw.setPosition(1);
-        lClaw.setPosition(0);
+        rClaw.setPosition(0);
+        lClaw.setPosition(1);
       // intake.setPower(0);
         lift.setPower(0);
 
