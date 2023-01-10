@@ -305,7 +305,7 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 robot.fLeftWheel.setPower(.5);
                 robot.bRightWheel.setPower(.5);
                 robot.bLeftWheel.setPower(.5);
-                sleep(1150);
+                sleep(1500);
                 // robot.fRightWheel.setPower(.3);
                 // robot.fLeftWheel.setPower(-.5);
                 // robot.bRightWheel.setPower(-.75);
@@ -329,7 +329,17 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 robot.fLeftWheel.setPower(0);
                 robot.bRightWheel.setPower(0);
                 robot.bLeftWheel.setPower(0);
-
+                sleep(1000);
+                robot.fRightWheel.setPower(-.5);
+                robot.bRightWheel.setPower(-.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1300);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1400);
 
             } else {
                 //trajectory
