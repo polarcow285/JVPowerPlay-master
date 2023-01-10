@@ -27,6 +27,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.Projects.hi;
+import org.firstinspires.ftc.teamcode.auto.ParkingAUTO;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -38,6 +39,10 @@ import java.util.ArrayList;
 @Autonomous(name = "camera")
 public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends LinearOpMode
 {
+    enum Side{
+        Right,
+        Left
+    }
     public hi robot = new hi();
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
@@ -65,6 +70,8 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
     @Override
     public void runOpMode()
     {
+        boolean isRight = true;
+        Side a = Side.Right;
         robot.init(hardwareMap);
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
@@ -168,94 +175,200 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             telemetry.update();
         }
 
-        /* Actually do something useful */
-        if(tagOfInterest == null || tagOfInterest.id == Left ) {
-            //trajectory
-            robot.rClaw.setPosition(0);
-            robot.lClaw.setPosition(1);
-            robot.fRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1600);
-            robot.fRightWheel.setPower(0);
-            robot.fLeftWheel.setPower(0);
-            robot.bRightWheel.setPower(0);
-            robot.bLeftWheel.setPower(0);
-            sleep(1000);
-            robot.fRightWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(-.5);
-            robot.bLeftWheel.setPower(-.5);
-            sleep(1000);
-            robot.fRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1150);
-           // robot.fRightWheel.setPower(.3);
-           // robot.fLeftWheel.setPower(-.5);
-           // robot.bRightWheel.setPower(-.75);
-           // robot.bLeftWheel.setPower(.5);
-           // sleep(2300);
-            robot.fRightWheel.setPower(0);
-            robot.fLeftWheel.setPower(0);
-            robot.bRightWheel.setPower(0);
-            robot.bLeftWheel.setPower(0);
+        if (gamepad1.right_bumper && !gamepad1.right_bumper){
 
-        } else if(tagOfInterest.id == Middle) {
-            //trajectory
-            robot.rClaw.setPosition(0);
-            robot.lClaw.setPosition(1);
-            robot.fRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1600);
-            robot.fRightWheel.setPower(0);
-            robot.fLeftWheel.setPower(0);
-            robot.bRightWheel.setPower(0);
-            robot.bLeftWheel.setPower(0);
-
-
-        }else {
-            //trajectory
-
-
-            robot.rClaw.setPosition(0);
-            robot.lClaw.setPosition(1);
-            robot.fRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1600);
-            robot.fRightWheel.setPower(0);
-            robot.fLeftWheel.setPower(0);
-            robot.bRightWheel.setPower(0);
-            robot.bLeftWheel.setPower(0);
-            sleep(1000);
-            robot.fRightWheel.setPower(-.5);
-            robot.bRightWheel.setPower(-.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1300);
-            robot.fRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1400);
-
-           // robot.fRightWheel.setPower(-.8);
-            //robot.fLeftWheel.setPower(.5);
-           // robot.bRightWheel.setPower(.5);
-            //robot.bLeftWheel.setPower(-.5);
-           // sleep(2300);
-            robot.fRightWheel.setPower(0);
-            robot.fLeftWheel.setPower(0);
-            robot.bRightWheel.setPower(0);
-            robot.bLeftWheel.setPower(0);
+            isRight = !isRight;
         }
+        if (isRight){
 
+            a = Side.Right;
+        }
+        else{
+
+            a = Side.Left;
+        }
+        telemetry.addData("Parking",a);
+        telemetry.update();
+
+        if (a == Side.Right) {
+            if(tagOfInterest == null || tagOfInterest.id == Left ) {
+                //trajectory
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1600);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+                sleep(1000);
+                robot.fRightWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(-.5);
+                robot.bLeftWheel.setPower(-.5);
+                sleep(1000);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1150);
+                // robot.fRightWheel.setPower(.3);
+                // robot.fLeftWheel.setPower(-.5);
+                // robot.bRightWheel.setPower(-.75);
+                // robot.bLeftWheel.setPower(.5);
+                // sleep(2300);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+
+            } else if(tagOfInterest.id == Middle) {
+                //trajectory
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1600);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+
+
+            }else {
+                //trajectory
+
+
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1600);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+                sleep(1000);
+                robot.fRightWheel.setPower(-.5);
+                robot.bRightWheel.setPower(-.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1300);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1400);
+
+                // robot.fRightWheel.setPower(-.8);
+                //robot.fLeftWheel.setPower(.5);
+                // robot.bRightWheel.setPower(.5);
+                //robot.bLeftWheel.setPower(-.5);
+                // sleep(2300);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+            }
+        }
+        else {
+
+
+            /* Actually do something useful */
+            if (tagOfInterest == null || tagOfInterest.id == Left) {
+                //trajectory
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1600);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+                sleep(1000);
+                robot.fRightWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(-.5);
+                robot.bLeftWheel.setPower(-.5);
+                sleep(1000);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1150);
+                // robot.fRightWheel.setPower(.3);
+                // robot.fLeftWheel.setPower(-.5);
+                // robot.bRightWheel.setPower(-.75);
+                // robot.bLeftWheel.setPower(.5);
+                // sleep(2300);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+
+            } else if (tagOfInterest.id == Middle) {
+                //trajectory
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1600);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+
+
+            } else {
+                //trajectory
+
+
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1600);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+                sleep(1000);
+                robot.fRightWheel.setPower(-.5);
+                robot.bRightWheel.setPower(-.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1300);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1400);
+
+                // robot.fRightWheel.setPower(-.8);
+                //robot.fLeftWheel.setPower(.5);
+                // robot.bRightWheel.setPower(.5);
+                //robot.bLeftWheel.setPower(-.5);
+                // sleep(2300);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+            }
+        }
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
         while (opModeIsActive()) {sleep(20);}
     }
