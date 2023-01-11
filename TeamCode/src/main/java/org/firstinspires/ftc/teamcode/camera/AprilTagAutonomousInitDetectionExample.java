@@ -178,7 +178,11 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
         if (gamepad1.right_bumper){
 
             isRight = !isRight;
+
         }
+        telemetry.addData("isRight", a);
+        telemetry.update();
+
         if (isRight){
 
             a = Side.Right;
@@ -284,37 +288,14 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 //trajectory
                 robot.rClaw.setPosition(1);
                 robot.lClaw.setPosition(0);
-                robot.fRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1600);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000);
-                robot.fRightWheel.setPower(-.5);
-                robot.bRightWheel.setPower(-.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(500);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(500);
+                moveRobot(1,.5);
+                turnRobot("right",45);
                 robot.lift.setPower(-1);
                 robot.lift.setTargetPosition(-1400);
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
                 robot.lift.setPower(1);
                 robot.lift.setTargetPosition(0);
-                robot.fRightWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000);
 
             } else {
                 //trajectory
