@@ -334,7 +334,7 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
         robot.fLeftWheel.setPower(speed);
         robot.bRightWheel.setPower(speed);
         robot.bLeftWheel.setPower(speed);
-        sleep((long) (800/speed*numOfTiles));
+        sleep((long) (1000/speed*numOfTiles));
         robot.fRightWheel.setPower(0);
         robot.fLeftWheel.setPower(0);
         robot.bRightWheel.setPower(0);
