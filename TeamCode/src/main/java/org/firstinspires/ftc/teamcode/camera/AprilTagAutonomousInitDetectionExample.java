@@ -175,7 +175,7 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             telemetry.update();
         }
 
-        if (gamepad1.right_bumper && !gamepad1.right_bumper){
+        if (gamepad1.right_bumper){
 
             isRight = !isRight;
         }
@@ -195,103 +195,38 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 //trajectory
                 robot.rClaw.setPosition(1);
                 robot.lClaw.setPosition(0);
-                robot.fRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1600);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
+                moveRobot(1.0, 0.5);
                 sleep(1000);
-                robot.fRightWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(-.5);
-                robot.bLeftWheel.setPower(-.5);
+                turnRobot("left", 45);
                 sleep(500);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(500)
                 robot.lift.setPower(-1);
                 robot.lift.setTargetPosition(-1400);
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
                 robot.lift.setPower(1);
                 robot.lift.setTargetPosition(0);
-                robot.fRightWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000)
-                robot.fRightWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(-.5);
-                robot.bLeftWheel.setPower(-.5);
-                sleep(500);
-                robot.fRightWheel.setPower(-.5);
-                robot.bRightWheel.setPower(-.5);
-                robot.fLeftWheel.setPower(-.5);
-                robot.bLeftWheel.setPower(-.5);
-                sleep(300)
-                robot.fRightWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(500)
-                robot.fRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1450);
+                turnRobot("left", 45);
+                moveRobot(.95,.5);
                 // robot.fRightWheel.setPower(.3);
                 // robot.fLeftWheel.setPower(-.5);
                 // robot.bRightWheel.setPower(-.75);
                 // robot.bLeftWheel.setPower(.5);
                 // sleep(2300);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
 
             } else if(tagOfInterest.id == Middle) {
                 //trajectory
                 robot.rClaw.setPosition(1);
                 robot.lClaw.setPosition(0);
-                robot.fRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1600);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
+                moveRobot(1,.5);
                 sleep(1000);
-                robot.fRightWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(-.5);
-                robot.bLeftWheel.setPower(-.5);
+                turnRobot("left", 45);
                 sleep(500);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(500)
                 robot.lift.setPower(-1);
                 robot.lift.setTargetPosition(-1400);
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
                 robot.lift.setPower(1);
                 robot.lift.setTargetPosition(0);
-                robot.fRightWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000)
-
 
             }else {
                 //trajectory
@@ -299,67 +234,24 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
 
                 robot.rClaw.setPosition(1);
                 robot.lClaw.setPosition(0);
-                robot.fRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1600);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000);
-                robot.fRightWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(-.5);
-                robot.bLeftWheel.setPower(-.5);
-                sleep(500);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(500)
+                moveRobot(1,.5);
+                turnRobot("left", 45);
                 robot.lift.setPower(-1);
                 robot.lift.setTargetPosition(-1400);
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
                 robot.lift.setPower(1);
                 robot.lift.setTargetPosition(0);
-                robot.fRightWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000)
-                robot.fRightWheel.setPower(-0.25);
-                robot.bRightWheel.setPower(-0.25);
-                robot.fLeftWheel.setPower(-0.25);
-                robot.bLeftWheel.setPower(-0.25);
-                sleep(200)
-                robot.fRightWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000)
-                robot.fRightWheel.setPower(-.5);
-                robot.bRightWheel.setPower(-.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1950);
-                robot.fRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1400);
+                turnRobot("right", 135);
+                moveRobot(.95,.5);
+
 
                 // robot.fRightWheel.setPower(-.8);
                 //robot.fLeftWheel.setPower(.5);
                 // robot.bRightWheel.setPower(.5);
                 //robot.bLeftWheel.setPower(-.5);
                 // sleep(2300);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
+
             }
         }
         else {
@@ -370,56 +262,23 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 //trajectory
                 robot.rClaw.setPosition(1);
                 robot.lClaw.setPosition(0);
-                robot.fRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1600);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000);
-                robot.fRightWheel.setPower(-.5);
-                robot.bRightWheel.setPower(-.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(500);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(500)
+                moveRobot(1,.5);
+                turnRobot("right",45);
                 robot.lift.setPower(-1);
                 robot.lift.setTargetPosition(-1400);
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
                 robot.lift.setPower(1);
                 robot.lift.setTargetPosition(0);
-                robot.fRightWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000)
-                robot.fRightWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(-.5);
-                robot.bLeftWheel.setPower(-.5);
-                sleep(1500);
-                robot.fRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1500);
+                turnRobot("left",135);
+                moveRobot(1,.5);
+
                 // robot.fRightWheel.setPower(.3);
                 // robot.fLeftWheel.setPower(-.5);
                 // robot.bRightWheel.setPower(-.75);
                 // robot.bLeftWheel.setPower(.5);
                 // sleep(2300);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
+
 
             } else if (tagOfInterest.id == Middle) {
                 //trajectory
@@ -444,7 +303,7 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 robot.fLeftWheel.setPower(0);
                 robot.bRightWheel.setPower(0);
                 robot.bLeftWheel.setPower(0);
-                sleep(500)
+                sleep(500);
                 robot.lift.setPower(-1);
                 robot.lift.setTargetPosition(-1400);
                 robot.rClaw.setPosition(0);
@@ -455,7 +314,7 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 robot.bRightWheel.setPower(0);
                 robot.fLeftWheel.setPower(0);
                 robot.bLeftWheel.setPower(0);
-                sleep(1000)
+                sleep(1000);
 
             } else {
                 //trajectory
@@ -463,57 +322,25 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
 
                 robot.rClaw.setPosition(1);
                 robot.lClaw.setPosition(0);
-                robot.fRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1600);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000);
-                robot.fRightWheel.setPower(-.5);
-                robot.bRightWheel.setPower(-.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(500);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(500)
+                moveRobot(1,.5);
+                turnRobot("right", 45);
+
                 robot.lift.setPower(-1);
                 robot.lift.setTargetPosition(-1400);
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
                 robot.lift.setPower(1);
                 robot.lift.setTargetPosition(0);
-                robot.fRightWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
-                sleep(1000)
-                robot.fRightWheel.setPower(-.5);
-                robot.bRightWheel.setPower(-.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1950);
-                robot.fRightWheel.setPower(.5);
-                robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
-                robot.bLeftWheel.setPower(.5);
-                sleep(1400);
+                turnRobot("right", 45);
+                moveRobot(1,0.5);
+
 
                 // robot.fRightWheel.setPower(-.8);
                 //robot.fLeftWheel.setPower(.5);
                 // robot.bRightWheel.setPower(.5);
                 //robot.bLeftWheel.setPower(-.5);
                 // sleep(2300);
-                robot.fRightWheel.setPower(0);
-                robot.fLeftWheel.setPower(0);
-                robot.bRightWheel.setPower(0);
-                robot.bLeftWheel.setPower(0);
+
             }
         }
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
@@ -521,17 +348,16 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
     }
 
 
-    void moveRobot(int numOfTiles, int speed) {
+    void moveRobot(double numOfTiles, double speed) {
         robot.fRightWheel.setPower(speed);
         robot.fLeftWheel.setPower(speed);
         robot.bRightWheel.setPower(speed);
         robot.bLeftWheel.setPower(speed);
-        sleep(1600*speed*numOfTiles);
+        sleep((long) (800/speed*numOfTiles));
         robot.fRightWheel.setPower(0);
         robot.fLeftWheel.setPower(0);
         robot.bRightWheel.setPower(0);
         robot.bLeftWheel.setPower(0);
-
     }
 
     void turnRobot(String direction, int degrees) {
@@ -540,7 +366,7 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             robot.bRightWheel.setPower(-.5);
             robot.fLeftWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(degrees/45*650);
+            sleep(degrees/45*500);
             robot.fRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
             robot.bRightWheel.setPower(0);
