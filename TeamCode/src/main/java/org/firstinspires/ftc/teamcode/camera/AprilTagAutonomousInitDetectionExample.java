@@ -352,12 +352,12 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
     }
 
 
-    void moveRobot(double numOfTiles, double speed) {
+    void moveRobot(double time, double speed) {
         robot.fRightWheel.setPower(speed);
         robot.fLeftWheel.setPower(speed);
         robot.bRightWheel.setPower(speed);
         robot.bLeftWheel.setPower(speed);
-        sleep((long) (1000/speed*numOfTiles));
+        sleep((long) (time));
         robot.fRightWheel.setPower(0);
         robot.fLeftWheel.setPower(0);
         robot.bRightWheel.setPower(0);
