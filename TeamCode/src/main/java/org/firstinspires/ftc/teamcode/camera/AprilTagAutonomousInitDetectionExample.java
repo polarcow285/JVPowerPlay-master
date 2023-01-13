@@ -24,6 +24,7 @@ package org.firstinspires.ftc.teamcode.camera;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.Projects.hi;
@@ -39,6 +40,7 @@ import java.util.ArrayList;
 @Autonomous(name = "camera")
 public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends LinearOpMode
 {
+
     enum Side{
         Right,
         Left
@@ -70,6 +72,7 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
     @Override
     public void runOpMode()
     {
+
         boolean isRight = true;
         Side a = Side.Right;
         robot.init(hardwareMap);
@@ -99,8 +102,15 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
          * The INIT-loop:
          * This REPLACES waitForStart!
          */
+
         while (!isStarted() && !isStopRequested())
         {
+
+            robot.lift.setTargetPosition(0);
+            robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+
+            robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             ArrayList<AprilTagDetection> currentDetections = aprilTagDetectionPipeline.getLatestDetections();
 
             if (currentDetections.size() != 0)
@@ -223,13 +233,26 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 robot.lClaw.setPosition(0);
                 moveRobot(1,.5);
                 sleep(1000);
-                turnRobot("left", 45);
-                sleep(500);
-                robot.lift.setPower(-1);
-                robot.lift.setTargetPosition(-1400);
+                robot.lift.setPower(-.5);
+                robot.lift.setTargetPosition(-1550);
+                sleep(5000);
+                turnRobot("left", 50);
+
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(250);
+                robot.fRightWheel.setPower(0);
+                 robot.fLeftWheel.setPower(0);
+                 robot.bRightWheel.setPower(0);
+                 robot.bLeftWheel.setPower(0);
+                sleep(3000);
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
-                robot.lift.setPower(1);
+                sleep(1000);
+
+                robot.lift.setPower(.5);
                 robot.lift.setTargetPosition(0);
 
             }else {

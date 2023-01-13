@@ -91,20 +91,20 @@ public class TestTeleop extends LinearOpMode {
 
             if (gamepad1.b == true){
                 robot.lift.setPower(1);
-                robot.lift.setTargetPosition(-875);
+                robot.lift.setTargetPosition(-900);
                 noU=-900;
 
 
            }
             if (gamepad1.y == true){
                 robot.lift.setPower(-1);
-               robot.lift.setTargetPosition(-1400);
+               robot.lift.setTargetPosition(-1550);
                noU = -1500;
             }
 
             if(gamepad1.x == true){
                 robot.lift.setPower(-1);
-              robot.lift.setTargetPosition(-2000);
+              robot.lift.setTargetPosition(-2135);
               noU = -2100;
             }
             if (gamepad1.a == true){
