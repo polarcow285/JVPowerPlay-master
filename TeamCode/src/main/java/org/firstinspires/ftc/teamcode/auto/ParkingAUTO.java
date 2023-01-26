@@ -26,6 +26,7 @@ public class ParkingAUTO extends LinearOpMode{
         int direction = 1;
         int otherDirection = -1;
         boolean isRight = true;
+        //we wish you a merry christmas, we wish you a merry christmas, we wish you a merry christmas, and a happy new year
 
         while(!isStarted()){
             try{

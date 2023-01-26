@@ -24,9 +24,13 @@ package org.firstinspires.ftc.teamcode.camera;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.exception.RobotCoreException;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.Projects.hi;
+import org.firstinspires.ftc.teamcode.auto.ParkingAUTO;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -38,6 +42,13 @@ import java.util.ArrayList;
 @Autonomous(name = "camera")
 public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends LinearOpMode
 {
+
+    enum Side{
+        Right,
+        Left
+    }
+    Gamepad currentGamepad1 = new Gamepad();
+    Gamepad previousGamepad1 = new Gamepad();
     public hi robot = new hi();
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
@@ -65,6 +76,10 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
     @Override
     public void runOpMode()
     {
+
+        Side a = Side.Right;
+        boolean isRight = true;
+
         robot.init(hardwareMap);
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
@@ -92,8 +107,24 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
          * The INIT-loop:
          * This REPLACES waitForStart!
          */
+
         while (!isStarted() && !isStopRequested())
         {
+            try{
+
+                previousGamepad1.copy(currentGamepad1);
+                currentGamepad1.copy(gamepad1);
+            }
+            catch (RobotCoreException e){
+
+
+            }
+
+            robot.lift.setTargetPosition(0);
+            robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+
+            robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             ArrayList<AprilTagDetection> currentDetections = aprilTagDetectionPipeline.getLatestDetections();
 
             if (currentDetections.size() != 0)
@@ -168,98 +199,314 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             telemetry.update();
         }
 
-        /* Actually do something useful */
-        if(tagOfInterest == null || tagOfInterest.id == Left ) {
-            //trajectory
-            robot.rClaw.setPosition(0);
-            robot.lClaw.setPosition(1);
-            robot.fRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1600);
-            robot.fRightWheel.setPower(0);
-            robot.fLeftWheel.setPower(0);
-            robot.bRightWheel.setPower(0);
-            robot.bLeftWheel.setPower(0);
-            sleep(1000);
-            robot.fRightWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(-.5);
-            robot.bLeftWheel.setPower(-.5);
-            sleep(1000);
-            robot.fRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1150);
-           // robot.fRightWheel.setPower(.3);
-           // robot.fLeftWheel.setPower(-.5);
-           // robot.bRightWheel.setPower(-.75);
-           // robot.bLeftWheel.setPower(.5);
-           // sleep(2300);
-            robot.fRightWheel.setPower(0);
-            robot.fLeftWheel.setPower(0);
-            robot.bRightWheel.setPower(0);
-            robot.bLeftWheel.setPower(0);
-
-        } else if(tagOfInterest.id == Middle) {
-            //trajectory
-            robot.rClaw.setPosition(0);
-            robot.lClaw.setPosition(1);
-            robot.fRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1600);
-            robot.fRightWheel.setPower(0);
-            robot.fLeftWheel.setPower(0);
-            robot.bRightWheel.setPower(0);
-            robot.bLeftWheel.setPower(0);
 
 
-        }else {
-            //trajectory
+        if (currentGamepad1.right_bumper && !previousGamepad1.right_bumper){
+
+            isRight = !isRight;
+        }
+        if (isRight){
+
+            a = Side.Right;
+        }
+        else{
+
+            a = Side.Left;
+        }
+        telemetry.addData("Side",a);
+        telemetry.update();
+
+        if (a == Side.Right) {
+            if(tagOfInterest == null || tagOfInterest.id == Left ) {
+                //trajectory
+                robot.rClaw.setPosition(1);
+                robot.lClaw.setPosition(0);
+                moveRobot(1600,.5);
+                sleep(1000);
+                robot.lift.setPower(-.5);
+                robot.lift.setTargetPosition(-1550);
+                sleep(5000);
+                turnRobot("left", 50);
+
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(250);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+                sleep(3000);
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                sleep(1000);
+
+                robot.lift.setPower(.5);
+                robot.lift.setTargetPosition(0);
+                moveRobot(400, -.5);
+                turnRobot("right", 50);
+                // robot.rClaw.setPosition(1);
+                //robot.lClaw.setPosition(0);
+               // moveRobot(1600, 0.5);
+                sleep(1000);
+                turnRobot("left", 90);
+                sleep(500);
+                moveRobot(1600,.5);
+
+                // robot.fRightWheel.setPower(.3);
+                // robot.fLeftWheel.setPower(-.5);
+                // robot.bRightWheel.setPower(-.75);
+                // robot.bLeftWheel.setPower(.5);
+                // sleep(2300);
+
+            } else if(tagOfInterest.id == Middle) {
+                //trajectory
+                robot.rClaw.setPosition(1);
+                robot.lClaw.setPosition(0);
+                moveRobot(1600,.5);
+                sleep(1000);
+                robot.lift.setPower(-.5);
+                robot.lift.setTargetPosition(-1550);
+                sleep(5000);
+                turnRobot("left", 50);
+
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(250);
+                robot.fRightWheel.setPower(0);
+                 robot.fLeftWheel.setPower(0);
+                 robot.bRightWheel.setPower(0);
+                 robot.bLeftWheel.setPower(0);
+                sleep(3000);
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                sleep(1000);
+
+                robot.lift.setPower(.5);
+                robot.lift.setTargetPosition(0);
+                moveRobot(400, -.5);
+                turnRobot("right", 50);
+
+            }else {
+                //trajectory
 
 
-            robot.rClaw.setPosition(0);
-            robot.lClaw.setPosition(1);
-            robot.fRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1600);
-            robot.fRightWheel.setPower(0);
-            robot.fLeftWheel.setPower(0);
-            robot.bRightWheel.setPower(0);
-            robot.bLeftWheel.setPower(0);
-            sleep(1000);
+                robot.rClaw.setPosition(1);
+                robot.lClaw.setPosition(0);
+                moveRobot(1600,.5);
+                sleep(1000);
+                robot.lift.setPower(-.5);
+                robot.lift.setTargetPosition(-1550);
+                sleep(5000);
+                turnRobot("left", 50);
+
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(250);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+                sleep(3000);
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                sleep(1000);
+
+                robot.lift.setPower(.5);
+                robot.lift.setTargetPosition(0);
+                moveRobot(400, -.5);
+                turnRobot("right", 50);
+                //robot.rClaw.setPosition(1);
+                //robot.lClaw.setPosition(0);
+                //moveRobot(1600, 0.5);
+                sleep(1000);
+                turnRobot("right", 90);
+                sleep(500);
+                moveRobot(1600,.5);
+
+
+                // robot.fRightWheel.setPower(-.8);
+                //robot.fLeftWheel.setPower(.5);
+                // robot.bRightWheel.setPower(.5);
+                //robot.bLeftWheel.setPower(-.5);
+                // sleep(2300);
+
+            }
+        }
+        else {
+
+
+            /* Actually do something useful */
+            if (tagOfInterest == null || tagOfInterest.id == Left) {
+                //trajectory
+
+                robot.rClaw.setPosition(1);
+                robot.lClaw.setPosition(0);
+                moveRobot(1600,.5);
+                sleep(1000);
+                robot.lift.setPower(-.5);
+                robot.lift.setTargetPosition(-1550);
+                sleep(5000);
+                turnRobot("right", 50);
+
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(250);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+                sleep(3000);
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                sleep(1000);
+
+                robot.lift.setPower(.5);
+                robot.lift.setTargetPosition(0);
+                moveRobot(400, -.5);
+                turnRobot("left", 50);
+               // robot.rClaw.setPosition(1);
+                //robot.lClaw.setPosition(0);
+              //  moveRobot(1600, 0.5);
+                sleep(1000);
+                turnRobot("left", 90);
+                sleep(500);
+                moveRobot(1600,.5);
+
+                // robot.fRightWheel.setPower(.3);
+                // robot.fLeftWheel.setPower(-.5);
+                // robot.bRightWheel.setPower(-.75);
+                // robot.bLeftWheel.setPower(.5);
+                // sleep(2300);
+
+
+            } else if (tagOfInterest.id == Middle) {
+                //trajectory
+                robot.rClaw.setPosition(1);
+                robot.lClaw.setPosition(0);
+                moveRobot(1600,.5);
+                sleep(1000);
+                robot.lift.setPower(-.5);
+                robot.lift.setTargetPosition(-1550);
+                sleep(5000);
+                turnRobot("right", 50);
+
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(250);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+                sleep(3000);
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                sleep(1000);
+
+                robot.lift.setPower(.5);
+                robot.lift.setTargetPosition(0);
+                moveRobot(400, -.5);
+                turnRobot("left", 50);
+
+
+            } else {
+                //trajectory
+
+
+                robot.rClaw.setPosition(1);
+                robot.lClaw.setPosition(0);
+                moveRobot(1600,.5);
+                sleep(1000);
+                robot.lift.setPower(-.5);
+                robot.lift.setTargetPosition(-1550);
+                sleep(5000);
+                turnRobot("right", 50);
+
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(250);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
+                robot.bLeftWheel.setPower(0);
+                sleep(3000);
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                sleep(1000);
+
+                robot.lift.setPower(.5);
+                robot.lift.setTargetPosition(0);
+                moveRobot(400, -.5);
+                turnRobot("left", 50);
+               // robot.rClaw.setPosition(1);
+                //robot.lClaw.setPosition(0);
+                //moveRobot(1600, 0.5);
+                sleep(1000);
+                turnRobot("right", 90);
+                sleep(500);
+                moveRobot(1600,.5);
+
+
+                // robot.fRightWheel.setPower(-.8);
+                //robot.fLeftWheel.setPower(.5);
+                // robot.bRightWheel.setPower(.5);
+                //robot.bLeftWheel.setPower(-.5);
+                // sleep(2300);
+
+            }
+        }
+        /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
+        while (opModeIsActive()) {sleep(20);}
+    }
+
+
+    void moveRobot(double time, double speed) {
+        robot.fRightWheel.setPower(speed);
+        robot.fLeftWheel.setPower(speed);
+        robot.bRightWheel.setPower(speed);
+        robot.bLeftWheel.setPower(speed);
+        sleep((long) (time));
+        robot.fRightWheel.setPower(0);
+        robot.fLeftWheel.setPower(0);
+        robot.bRightWheel.setPower(0);
+        robot.bLeftWheel.setPower(0);
+    }
+
+    void turnRobot(String direction, int degrees) {
+        if (direction == "right") {
             robot.fRightWheel.setPower(-.5);
             robot.bRightWheel.setPower(-.5);
             robot.fLeftWheel.setPower(.5);
             robot.bLeftWheel.setPower(.5);
-            sleep(1300);
-            robot.fRightWheel.setPower(.5);
-            robot.fLeftWheel.setPower(.5);
-            robot.bRightWheel.setPower(.5);
-            robot.bLeftWheel.setPower(.5);
-            sleep(1400);
-
-           // robot.fRightWheel.setPower(-.8);
-            //robot.fLeftWheel.setPower(.5);
-           // robot.bRightWheel.setPower(.5);
-            //robot.bLeftWheel.setPower(-.5);
-           // sleep(2300);
+            sleep(degrees/45*500);
             robot.fRightWheel.setPower(0);
             robot.fLeftWheel.setPower(0);
             robot.bRightWheel.setPower(0);
             robot.bLeftWheel.setPower(0);
         }
-
-        /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
-        while (opModeIsActive()) {sleep(20);}
+        if (direction == "left") {
+            robot.fRightWheel.setPower(.5);
+            robot.bRightWheel.setPower(.5);
+            robot.fLeftWheel.setPower(-.5);
+            robot.bLeftWheel.setPower(-.5);
+            sleep(degrees/45*650);
+            robot.fRightWheel.setPower(0);
+            robot.fLeftWheel.setPower(0);
+            robot.bRightWheel.setPower(0);
+            robot.bLeftWheel.setPower(0);
+        }
     }
-
     void tagToTelemetry(AprilTagDetection detection)
     {
         telemetry.addLine(String.format("\nDetected tag ID=%d", detection.id));
