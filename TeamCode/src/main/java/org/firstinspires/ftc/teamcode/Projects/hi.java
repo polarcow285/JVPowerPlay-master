@@ -14,7 +14,9 @@ public class hi extends Project{
    public Servo rClaw = null;
     public Servo lClaw = null;
    // public DcMotor intake = null;
-   public DcMotor lift = null;
+   public DcMotor rightLift = null;
+   public DcMotor leftLift = null;
+
 
     @Override
     public void init(HardwareMap ahwMap) {

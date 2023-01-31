@@ -349,8 +349,10 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 robot.lClaw.setPosition(0);
                 moveRobot(1600,.5);
                 sleep(1000);
-                robot.lift.setPower(-.5);
-                robot.lift.setTargetPosition(-1550);
+                robot.rightLift.setPower(-.5);
+                robot.leftLift.setPower(-.5);
+                robot.rightLift.setTargetPosition(-1550);
+                robot.leftLift.setTargetPosition(-1550);
                 sleep(5000);
                 turnRobot("right", 50);
 
@@ -368,8 +370,10 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 robot.lClaw.setPosition(1);
                 sleep(1000);
 
-                robot.lift.setPower(.5);
-                robot.lift.setTargetPosition(0);
+                robot.rightLift.setPower(.5);
+                robot.leftLift.setPower(.5);
+                robot.rightLift.setTargetPosition(0);
+                robot.leftLift.setTargetPosition(0);
                 moveRobot(400, -.5);
                 turnRobot("left", 50);
                // robot.rClaw.setPosition(1);
