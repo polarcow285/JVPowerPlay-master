@@ -67,7 +67,8 @@ public class TestTeleop extends LinearOpMode {
 
                     noU = noU + 5;
 
-                robot.lift.setPower(-.4);
+                robot.rightLift.setPower(-.4);
+                robot.leftLift.setPower(-.4);
               robot.lift.setTargetPosition(noU);
             }
             if (gamepad1.right_trigger == 1&&noU>-2200) {
@@ -78,8 +79,10 @@ public class TestTeleop extends LinearOpMode {
 
                    noU = noU-5;
 
-                robot.lift.setPower(.4);
-               robot.lift.setTargetPosition(noU);
+                robot.rightLift.setPower(.4);
+                robot.leftLift.setPower(.4);
+               robot.rightLift.setTargetPosition(noU);
+               robot.leftLift.setTargetPosition(noU);
 
 
 
@@ -90,26 +93,35 @@ public class TestTeleop extends LinearOpMode {
            }
 
             if (gamepad1.b == true){
-                robot.lift.setPower(1);
-                robot.lift.setTargetPosition(-900);
+                robot.rightLift.setPower(1);
+                robot.leftLift.setPower(1);
+
+                robot.rightLift.setTargetPosition(-900);
+                robot.leftLift.setTargetPosition(-900);
                 noU=-900;
 
 
            }
             if (gamepad1.y == true){
-                robot.lift.setPower(-1);
-               robot.lift.setTargetPosition(-1550);
+                robot.rightLift.setPower(-1);
+                robot.leftLift.setPower(-1);
+                robot.rightLift.setTargetPosition(-1550);
+                robot.leftLift.setTargetPosition(-1550);
                noU = -1500;
             }
 
             if(gamepad1.x == true){
-                robot.lift.setPower(-1);
-              robot.lift.setTargetPosition(-2135);
-              noU = -2100;
+                robot.rightLift.setPower(-1);
+                robot.leftLift.setPower(-1);
+              robot.rightLift.setTargetPosition(-2135);
+              robot.leftLift.setTargetPosition(-2135);
+              noU = -2135;
             }
             if (gamepad1.a == true){
-                robot.lift.setPower(-1);
-              robot.lift.setTargetPosition(0);
+                robot.rightLift.setPower(1);
+                robot.leftLift.setPower(1);
+              robot.rightLift.setTargetPosition(0);
+              robot.leftLift.setTargetPosition(0);
               robot.rClaw.setPosition(0);
               robot.lClaw.setPosition(1);
               noU = 0;
