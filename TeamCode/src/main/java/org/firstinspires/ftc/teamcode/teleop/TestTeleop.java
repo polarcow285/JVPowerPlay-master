@@ -23,11 +23,14 @@ public class TestTeleop extends LinearOpMode {
         int noU = -5000;
         double speed = .9;
         boolean isSlow = false;
-        robot.lift.setTargetPosition(0);
-        robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.rightLift.setTargetPosition(0);
+        robot.leftLift.setTargetPosition(0);
+        robot.rightLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.leftLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
-        robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         waitForStart();
         boolean isSpinning = false;
@@ -69,7 +72,8 @@ public class TestTeleop extends LinearOpMode {
 
                 robot.rightLift.setPower(-.4);
                 robot.leftLift.setPower(-.4);
-              robot.lift.setTargetPosition(noU);
+                robot.rightLift.setTargetPosition(noU);
+                robot.leftLift.setTargetPosition(noU);
             }
             if (gamepad1.right_trigger == 1&&noU>-2200) {
 
