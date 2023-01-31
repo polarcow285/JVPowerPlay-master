@@ -45,7 +45,8 @@ public class mechanum extends LinearOpMode {
             if (gamepad1.dpad_down == true) {
 
 
-                robot.lift.setPower(1);
+                robot.rightLift.setPower(1);
+                robot.leftLift.setPower(1);
                 // robot.lift.setTargetPosition(liftend);
                // if (noU<0) {
 
@@ -57,7 +58,8 @@ public class mechanum extends LinearOpMode {
             }
             if (gamepad1.dpad_up == true) {
 
-                robot.lift.setPower(-1);
+                robot.rightLift.setPower(-1);
+                robot.leftLift.setPower(-1);
                 //robot.lift.setTargetPosition(liftstart);
 
                // if(noU>-5000){
@@ -70,7 +72,8 @@ public class mechanum extends LinearOpMode {
 
             }
             else{
-                robot.lift.setPower(0);
+                robot.rightLift.setPower(0);
+                robot.leftLift.setPower(0);
             }
 
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!
