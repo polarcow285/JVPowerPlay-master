@@ -21,6 +21,7 @@ public class TestTeleop extends LinearOpMode {
         int liftstart = 0;
         int liftend = 200;
         int noU = -5000;
+        boolean isdown == true;
         double speed = .9;
         boolean isSlow = false;
         robot.rightLift.setTargetPosition(0);
@@ -37,7 +38,32 @@ public class TestTeleop extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            if (gamepad1.dpad_right == true ) {
+            if (gamepad2.right_bumper == true&&isdown==false){
+                robot.wristServo.setPosition(0);
+            }
+            else if (gamepad2.right_bumper == true&&isdown==true){
+                robot.wristServo.setPosition(1);
+            }
+
+            if (gamepad2.a == true){
+                robot.armServo1.setPosition(1);
+                robot.armServo2.setPosition(0);
+            }
+            if(gamepad2.b == true){
+                robot.armServo1.setPosition(.28);
+                robot.armServo2.setPosition(.72);
+            }
+            if(gamepad2.y==true){
+                robot.armServo1.setPosition(.72);
+                robot.armServo2.setPosition(.28);
+            }
+            if(gamepad2.x==true){
+                robot.armServo1.setPosition(0);
+                robot.armServo2.setPosition(1);
+            }
+
+
+            if (gamepad2.dpad_right == true ) {
                 robot.rClaw.setPosition(1);
                 robot.lClaw.setPosition(0);
                 //isSpinning = true;
@@ -48,7 +74,7 @@ public class TestTeleop extends LinearOpMode {
 
                 //robot.intake.setPower(0);
             //}
-            if (gamepad1.dpad_left == true ) {
+            if (gamepad2.dpad_left == true ) {
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
                // isSpinning = true;
