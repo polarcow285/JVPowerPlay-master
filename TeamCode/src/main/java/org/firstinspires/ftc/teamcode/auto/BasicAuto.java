@@ -25,15 +25,12 @@ public class BasicAuto extends LinearOpMode{
         boolean isRight = true;
 
         while(!isStarted()){
-            try{
+
 
                 previousGamepad1.copy(currentGamepad1);
                 currentGamepad1.copy(gamepad1);
-            }
-            catch (RobotCoreException e){
 
 
-            }
             if (currentGamepad1.right_bumper && !previousGamepad1.right_bumper){
 
                 isRight = !isRight;

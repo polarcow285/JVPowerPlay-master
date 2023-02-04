@@ -21,7 +21,7 @@ public class TestTeleop extends LinearOpMode {
         int liftstart = 0;
         int liftend = 200;
         int noU = -5000;
-        boolean isdown == true;
+        boolean isdown = true;
         double speed = .9;
         boolean isSlow = false;
         robot.rightLift.setTargetPosition(0);
@@ -38,10 +38,10 @@ public class TestTeleop extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            if (gamepad2.right_bumper == true&&isdown==false){
+            if (gamepad2.right_bumper == true){
                 robot.wristServo.setPosition(0);
             }
-            else if (gamepad2.right_bumper == true&&isdown==true){
+            else if (gamepad2.left_bumper == true){
                 robot.wristServo.setPosition(1);
             }
 

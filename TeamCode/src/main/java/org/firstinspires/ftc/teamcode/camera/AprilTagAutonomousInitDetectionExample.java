@@ -110,15 +110,11 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
 
         while (!isStarted() && !isStopRequested())
         {
-            try{
 
                 previousGamepad1.copy(currentGamepad1);
                 currentGamepad1.copy(gamepad1);
-            }
-            catch (RobotCoreException e){
 
 
-            }
 
             robot.rightLift.setTargetPosition(0);
             robot.rightLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

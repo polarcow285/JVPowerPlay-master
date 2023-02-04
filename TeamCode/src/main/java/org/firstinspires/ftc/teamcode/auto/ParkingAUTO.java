@@ -29,15 +29,12 @@ public class ParkingAUTO extends LinearOpMode{
         //we wish you a merry christmas, we wish you a merry christmas, we wish you a merry christmas, and a happy new year
 
         while(!isStarted()){
-            try{
+
 
                 previousGamepad1.copy(currentGamepad1);
                 currentGamepad1.copy(gamepad1);
-            }
-            catch (RobotCoreException e){
 
 
-            }
             if (currentGamepad1.right_bumper && !previousGamepad1.right_bumper){
 
                 isRight = !isRight;
