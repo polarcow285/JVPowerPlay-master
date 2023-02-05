@@ -162,15 +162,15 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
             }
             else
             {
-                telemetry.addLine("Don't see tag of interest :(");
+                telemetry.addLine("Don't see tag of interest\nlol, get better:(");
 
                 if(tagOfInterest == null)
                 {
-                    telemetry.addLine("(The tag has never been seen)");
+                    telemetry.addLine("(The tag has never been seen in the history of this run, the records must be incomplete)");
                 }
                 else
                 {
-                    telemetry.addLine("\nBut we HAVE seen the tag before; last seen at:");
+                    telemetry.addLine("\nBut we thankfully HAVE seen the tag before; last seen at:");
                     tagToTelemetry(tagOfInterest);
                 }
 
@@ -366,9 +366,10 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 robot.fLeftWheel.setPower(.5);
                 robot.bRightWheel.setPower(.5);
                 robot.bLeftWheel.setPower(.5);
-                sleep(1600);robot.fRightWheel.setPower(0);
-               robot.fLeftWheel.setPower(0);
-               robot.bRightWheel.setPower(0);
+                sleep(1600);
+                robot.fRightWheel.setPower(0);
+                robot.fLeftWheel.setPower(0);
+                robot.bRightWheel.setPower(0);
                 robot.bLeftWheel.setPower(0);
                 sleep(3000);
                 robot.rClaw.setPosition(0);
@@ -446,19 +447,24 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
               //  sleep(5000);
                 turnRobot("right", 90);
 
-                robot.fRightWheel.setPower(.5);
+                robot.fRightWheel.setPower(-.5);
                 robot.fLeftWheel.setPower(.5);
-                robot.bRightWheel.setPower(.5);
+                robot.bRightWheel.setPower(-.5);
                 robot.bLeftWheel.setPower(.5);
                 sleep(1600);
                robot.fRightWheel.setPower(0);
                robot.fLeftWheel.setPower(0);
                 robot.bRightWheel.setPower(0);
                 robot.bLeftWheel.setPower(0);
-                sleep(3000);
+                sleep(1000);
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
                 sleep(1000);
+                robot.fRightWheel.setPower(.5);
+                robot.fLeftWheel.setPower(.5);
+                robot.bRightWheel.setPower(.5);
+                robot.bLeftWheel.setPower(.5);
+                sleep(1600);
 
               //  robot.rightLift.setPower(.5);
              //   robot.leftLift.setPower(.5);
