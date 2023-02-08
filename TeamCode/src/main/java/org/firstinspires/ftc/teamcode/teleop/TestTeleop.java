@@ -50,12 +50,12 @@ public class TestTeleop extends LinearOpMode {
                 robot.armServo2.setPosition(0);
             }
             if(gamepad2.b == true){
-                robot.armServo1.setPosition(.28);
-                robot.armServo2.setPosition(.72);
-            }
-            if(gamepad2.y==true){
                 robot.armServo1.setPosition(.72);
                 robot.armServo2.setPosition(.28);
+            }
+            if(gamepad2.y==true){
+                robot.armServo1.setPosition(.28);
+                robot.armServo2.setPosition(.72);
             }
             if(gamepad2.x==true){
                 robot.armServo1.setPosition(0);
@@ -69,6 +69,31 @@ public class TestTeleop extends LinearOpMode {
                 //isSpinning = true;
 
 
+            }
+            if(gamepad2.right_trigger == 1) {
+                int height = -1500;
+                for(int i = 0; i < 3; i++) {
+                    // I like cats
+                    robot.leftLift.setTargetPosition(height);
+                    robot.rightLift.setTargetPosition(height);
+                    robot.rClaw.setPosition(1);
+                    robot.lClaw.setPosition(0);
+                    robot.wristServo.setPosition(0);
+                    robot.armServo1.setPosition(0.28);
+                    robot.armServo2.setPosition(0.72);
+                    robot.rClaw.setPosition(0);
+                    robot.lClaw.setPosition(1);
+                    robot.rClaw.setPosition(1);
+                    robot.lClaw.setPosition(0);
+                    robot.armServo1.setPosition(0.8);
+                    robot.armServo2.setPosition(0.2);
+                    robot.wristServo.setPosition(1);
+                    robot.leftLift.setTargetPosition(-350);
+                    robot.rightLift.setTargetPosition(-350);
+                    robot.rClaw.setPosition(0);
+                    robot.lClaw.setPosition(1);
+                    height = height + 32;
+                }
             }
            // else{
 
@@ -202,6 +227,10 @@ public class TestTeleop extends LinearOpMode {
         //   if (gamepad2.y == true) {
         //     robot.manipulatorMotor.setPower(-.2);
         //  }
+
+    }
+
+    private void cycle() {
 
     }
 
