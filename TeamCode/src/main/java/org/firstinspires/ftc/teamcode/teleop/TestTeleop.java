@@ -39,27 +39,35 @@ public class TestTeleop extends LinearOpMode {
         while (opModeIsActive()) {
 
             if (gamepad2.right_bumper == true){
-                robot.wristServo.setPosition(0);
+                robot.wristServo.setPosition(0.05);
             }
             else if (gamepad2.left_bumper == true){
-                robot.wristServo.setPosition(1);
+                robot.wristServo.setPosition(0.95);
             }
 
             if (gamepad2.a == true){
-                robot.armServo1.setPosition(1);
-                robot.armServo2.setPosition(0);
+                robot.armServo1.setPosition(0.85);
+                robot.armServo2.setPosition(0.15);
+                sleep(250);
+                robot.wristServo.setPosition(0.05);
             }
             if(gamepad2.b == true){
                 robot.armServo1.setPosition(.72);
                 robot.armServo2.setPosition(.28);
+                sleep(250);
+                robot.wristServo.setPosition(0.05);
             }
             if(gamepad2.y==true){
                 robot.armServo1.setPosition(.28);
                 robot.armServo2.setPosition(.72);
+                sleep(250);
+                robot.wristServo.setPosition(0.95);
             }
             if(gamepad2.x==true){
-                robot.armServo1.setPosition(0);
-                robot.armServo2.setPosition(1);
+                robot.armServo1.setPosition(0.15);
+                robot.armServo2.setPosition(0.85);
+                sleep(250);
+                robot.wristServo.setPosition(0.95);
             }
 
 
@@ -94,7 +102,7 @@ public class TestTeleop extends LinearOpMode {
                     robot.rightLift.setTargetPosition(-350);
                     robot.rClaw.setPosition(0);
                     robot.lClaw.setPosition(1);
-                    height = height + 32;
+                    height = height + 40;
                 }
             }
            // else{
@@ -153,26 +161,26 @@ public class TestTeleop extends LinearOpMode {
                 robot.rightLift.setPower(-1);
                 robot.leftLift.setPower(-1);
 
-                robot.rightLift.setTargetPosition(-300);
-                robot.leftLift.setTargetPosition(-300);
-                noU=-300;
+                robot.rightLift.setTargetPosition(-350);
+                robot.leftLift.setTargetPosition(-350);
+                noU=-350;
 
 
            }
             if (gamepad1.y == true){
                 robot.rightLift.setPower(-1);
                 robot.leftLift.setPower(-1);
-                robot.rightLift.setTargetPosition(-750);
-                robot.leftLift.setTargetPosition(-750);
-               noU = -750;
+                robot.rightLift.setTargetPosition(-850);
+                robot.leftLift.setTargetPosition(-850);
+               noU = -850;
             }
 
             if(gamepad1.x == true){
                 robot.rightLift.setPower(-1);
                 robot.leftLift.setPower(-1);
-              robot.rightLift.setTargetPosition(-1005);
-              robot.leftLift.setTargetPosition(-1005);
-              noU = -1005;
+              robot.rightLift.setTargetPosition(-1500);
+              robot.leftLift.setTargetPosition(-1500);
+              noU = -1500;
             }
             if (gamepad1.a == true){
                 robot.rightLift.setPower(1);
