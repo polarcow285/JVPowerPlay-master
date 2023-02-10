@@ -67,7 +67,7 @@ public class TestTeleop extends LinearOpMode {
                 robot.armServo1.setPosition(0.15);
                 robot.armServo2.setPosition(0.85);
                 sleep(250);
-                robot.wristServo.setPosition(0.95);
+                robot.wristServo.setPosition(0.05);
             }
 
 
