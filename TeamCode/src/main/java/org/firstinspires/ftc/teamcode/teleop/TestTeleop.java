@@ -67,7 +67,7 @@ public class TestTeleop extends LinearOpMode {
                 robot.armServo1.setPosition(0.15);
                 robot.armServo2.setPosition(0.85);
                 sleep(250);
-                robot.wristServo.setPosition(0.05);
+                robot.wristServo.setPosition(0.95);
             }
 
 
@@ -131,12 +131,12 @@ public class TestTeleop extends LinearOpMode {
 
                     noU = noU + 5;
 
-                robot.rightLift.setPower(-.4);
-                robot.leftLift.setPower(-.4);
+                robot.rightLift.setPower(.4);
+                robot.leftLift.setPower(.4);
                 robot.rightLift.setTargetPosition(noU);
                 robot.leftLift.setTargetPosition(noU);
             }
-            if (gamepad1.right_trigger == 1&&noU>-2200) {
+            if (gamepad1.right_trigger == 1&&noU>-1800) {
 
                 //robot.lift.setPower(-1);
                 //robot.lift.setTargetPosition(liftstart);
@@ -144,8 +144,8 @@ public class TestTeleop extends LinearOpMode {
 
                    noU = noU-5;
 
-                robot.rightLift.setPower(.4);
-                robot.leftLift.setPower(.4);
+                robot.rightLift.setPower(-.4);
+                robot.leftLift.setPower(-.4);
                robot.rightLift.setTargetPosition(noU);
                robot.leftLift.setTargetPosition(noU);
 
