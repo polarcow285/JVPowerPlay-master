@@ -24,8 +24,11 @@ public class TestTeleop extends LinearOpMode {
         boolean isdown = true;
         double speed = .9;
         boolean isSlow = false;
-        robot.rightLift.setTargetPosition(0);
-        robot.leftLift.setTargetPosition(0);
+        robot.rightLift.setTargetPosition(0.85);
+        robot.leftLift.setTargetPosition(0.15);
+        robot.rClaw.setPosition(0);
+        robot.lClaw.setPosition(1);
+
         robot.rightLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.leftLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -78,31 +81,6 @@ public class TestTeleop extends LinearOpMode {
 
 
             }
-            if(gamepad2.right_trigger >=0.01) {
-                int height = -300;
-                for(int i = 0; i < 3; i++) {
-                    // I like cats
-                    robot.leftLift.setTargetPosition(height);
-                    robot.rightLift.setTargetPosition(height);
-                    robot.rClaw.setPosition(1);
-                    robot.lClaw.setPosition(0);
-                    robot.wristServo.setPosition(0);
-                    sleep(1000);
-                    robot.armServo1.setPosition(0.28);
-                    robot.armServo2.setPosition(0.72);
-                    robot.rClaw.setPosition(0);
-                    robot.lClaw.setPosition(1);
-                    sleep(1000);
-                    robot.rClaw.setPosition(1);
-                    robot.lClaw.setPosition(0);
-                    robot.armServo1.setPosition(0.8);
-                    robot.armServo2.setPosition(0.2);
-                    robot.wristServo.setPosition(1);
-                    robot.leftLift.setTargetPosition(-350);
-                    robot.rightLift.setTargetPosition(-350);
-                    robot.rClaw.setPosition(0);
-                    robot.lClaw.setPosition(1);
-                    height = height + 40;
                 }
             }
            // else{
