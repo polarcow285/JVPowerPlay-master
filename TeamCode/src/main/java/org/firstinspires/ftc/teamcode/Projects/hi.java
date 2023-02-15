@@ -78,6 +78,8 @@ public class hi extends Project{
         // intake.setPower(0);
         rightLift.setPower(0);
         leftLift.setPower(0);
+        armServo1.setPosition(0.45);
+        armServo2.setPosition(0.55);
 
 
     }

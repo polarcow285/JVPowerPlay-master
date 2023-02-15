@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.exception.RobotCoreException;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Projects.hi;
-@TeleOp(name = "TestTeleop")
-public class TestTeleop extends LinearOpMode {
+@TeleOp(name = "motorTestpreset")
+public class motorTestpreset extends LinearOpMode {
     public hi robot = new hi();
 
 
@@ -79,95 +79,61 @@ public class TestTeleop extends LinearOpMode {
 
             }
 
-           // else{
+            // else{
 
-                //robot.intake.setPower(0);
+            //robot.intake.setPower(0);
             //}
             if (gamepad2.dpad_left == true ) {
                 robot.rClaw.setPosition(0);
                 robot.lClaw.setPosition(1);
-               // isSpinning = true;
+                // isSpinning = true;
 
 
             }
-            else{
-
-                //robot.intake.setPower(0);
-            }
-
-            if (gamepad1.left_trigger == 1&&noU<0) {
 
 
-              //robot.lift.setPower(1);
-               // robot.lift.setTargetPosition(liftend);
-
-
-
-                    noU = noU + 5;
-
-                robot.rightLift.setPower(.4);
-                robot.leftLift.setPower(.4);
-                robot.rightLift.setTargetPosition(noU);
-                robot.leftLift.setTargetPosition(noU);
-            }
-            else if (gamepad1.right_trigger == 1&&noU>-1800) {
-
-                //robot.lift.setPower(-1);
-                //robot.lift.setTargetPosition(liftstart);
-
-
-                   noU = noU-5;
-
-                robot.rightLift.setPower(-.4);
-                robot.leftLift.setPower(-.4);
-               robot.rightLift.setTargetPosition(noU);
-               robot.leftLift.setTargetPosition(noU);
-
-
-
-            }
 
             else {
-              // robot.lift.setPower(0);
-           }
+                // robot.lift.setPower(0);
+            }
 
             if (gamepad1.b == true){
-                robot.rightLift.setPower(-1);
-                robot.leftLift.setPower(-1);
+                robot.rightLift.setPower(1);
+                robot.leftLift.setPower(1);
 
-                robot.rightLift.setTargetPosition(-350);
-                robot.leftLift.setTargetPosition(-350);
-                noU=-350;
+                robot.rightLift.setTargetPosition(-500);
+                robot.leftLift.setTargetPosition(-500);
+                noU=-500;
 
 
-           }
+            }
             else if (gamepad1.y == true){
-                robot.rightLift.setPower(-1);
-                robot.leftLift.setPower(-1);
+                robot.rightLift.setPower(1);
+                robot.leftLift.setPower(1);
                 robot.rightLift.setTargetPosition(-850);
                 robot.leftLift.setTargetPosition(-850);
-               noU = -850;
+                noU = -850;
             }
 
             else if(gamepad1.x == true){
-                robot.rightLift.setPower(-1);
-                robot.leftLift.setPower(-1);
-              robot.rightLift.setTargetPosition(-1500);
-              robot.leftLift.setTargetPosition(-1500);
-              noU = -1500;
-            }
-            else if (gamepad1.a == true){
                 robot.rightLift.setPower(1);
                 robot.leftLift.setPower(1);
-              robot.rightLift.setTargetPosition(0);
-              robot.leftLift.setTargetPosition(0);
-              robot.rClaw.setPosition(0);
-              robot.lClaw.setPosition(1);
-              noU = 0;
+                robot.rightLift.setTargetPosition(-1600);
+                robot.leftLift.setTargetPosition(-1600);
+                noU = -1600;
+            }
+            else if (gamepad1.a == true){
+                robot.rightLift.setPower(-0.5);
+                robot.leftLift.setPower(-0.5);
+                robot.rightLift.setTargetPosition(0);
+                robot.leftLift.setTargetPosition(0);
+                robot.rClaw.setPosition(0);
+                robot.lClaw.setPosition(1);
+                noU = 0;
             }
 
             if (gamepad1.left_bumper == true){
-                    speed = .5;
+                speed = .5;
 
             }
             else{
@@ -219,6 +185,7 @@ public class TestTeleop extends LinearOpMode {
     }
 
 }
+
 
 
 

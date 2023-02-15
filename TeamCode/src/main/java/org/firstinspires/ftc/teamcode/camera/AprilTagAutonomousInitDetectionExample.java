@@ -371,8 +371,8 @@ public class AprilTagAutonomousInitDetectionExample<tagOfInterest> extends Linea
                 robot.armServo1.setPosition(0.15);
                 robot.armServo2.setPosition(0.85);
                 moveRobot(1500,1);
-                robot.rightLift.setTargetPosition(-1500);
-                robot.leftLift.setTargetPosition(-1500);
+                robot.rightLift.setTargetPosition(-1800);
+                robot.leftLift.setTargetPosition(-1800);
                 sleep(200);
                 turnRobot("right", 70);
                 moveRobot(200,1);
