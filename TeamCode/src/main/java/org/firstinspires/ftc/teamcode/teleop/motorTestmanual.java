@@ -89,12 +89,12 @@ public class motorTestmanual extends LinearOpMode {
             }
 
            if (gamepad1.dpad_up == true){
-               robot.leftLift.setPower(1);
-               robot.rightLift.setPower(1);
-           }
-           else if(gamepad1.dpad_down==true){
                robot.leftLift.setPower(-1);
                robot.rightLift.setPower(-1);
+           }
+           else if(gamepad1.dpad_down==true){
+               robot.leftLift.setPower(1);
+               robot.rightLift.setPower(1);
            }
            else{
                robot.leftLift.setPower(0);

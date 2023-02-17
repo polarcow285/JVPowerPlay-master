@@ -98,8 +98,8 @@ public class motorTestpreset extends LinearOpMode {
             }
 
             if (gamepad1.b == true){
-                robot.rightLift.setPower(1);
-                robot.leftLift.setPower(1);
+                robot.rightLift.setPower(-.8);
+                robot.leftLift.setPower(-.8);
 
                 robot.rightLift.setTargetPosition(-500);
                 robot.leftLift.setTargetPosition(-500);
@@ -108,23 +108,23 @@ public class motorTestpreset extends LinearOpMode {
 
             }
             else if (gamepad1.y == true){
-                robot.rightLift.setPower(1);
-                robot.leftLift.setPower(1);
+                robot.rightLift.setPower(-.8);
+                robot.leftLift.setPower(-.8);
                 robot.rightLift.setTargetPosition(-850);
                 robot.leftLift.setTargetPosition(-850);
                 noU = -850;
             }
 
             else if(gamepad1.x == true){
-                robot.rightLift.setPower(1);
-                robot.leftLift.setPower(1);
+                robot.rightLift.setPower(-.8);
+                robot.leftLift.setPower(-.8);
                 robot.rightLift.setTargetPosition(-1600);
                 robot.leftLift.setTargetPosition(-1600);
                 noU = -1600;
             }
             else if (gamepad1.a == true){
-                robot.rightLift.setPower(-0.5);
-                robot.leftLift.setPower(-0.5);
+                robot.rightLift.setPower(0.5);
+                robot.leftLift.setPower(0.5);
                 robot.rightLift.setTargetPosition(0);
                 robot.leftLift.setTargetPosition(0);
                 robot.rClaw.setPosition(0);

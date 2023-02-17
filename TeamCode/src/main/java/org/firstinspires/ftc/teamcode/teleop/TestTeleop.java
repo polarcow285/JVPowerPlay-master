@@ -105,8 +105,8 @@ public class TestTeleop extends LinearOpMode {
 
                     noU = noU + 5;
 
-                robot.rightLift.setPower(.4);
-                robot.leftLift.setPower(.4);
+                robot.rightLift.setPower(-.4);
+                robot.leftLift.setPower(-.4);
                 robot.rightLift.setTargetPosition(noU);
                 robot.leftLift.setTargetPosition(noU);
             }
@@ -118,8 +118,8 @@ public class TestTeleop extends LinearOpMode {
 
                    noU = noU-5;
 
-                robot.rightLift.setPower(-.4);
-                robot.leftLift.setPower(-.4);
+                robot.rightLift.setPower(.4);
+                robot.leftLift.setPower(.4);
                robot.rightLift.setTargetPosition(noU);
                robot.leftLift.setTargetPosition(noU);
 
@@ -131,39 +131,41 @@ public class TestTeleop extends LinearOpMode {
               // robot.lift.setPower(0);
            }
 
+
             if (gamepad1.b == true){
-                robot.rightLift.setPower(-1);
-                robot.leftLift.setPower(-1);
+
 
                 robot.rightLift.setTargetPosition(-350);
                 robot.leftLift.setTargetPosition(-350);
-                noU=-350;
+                noU = WaitTillTargetReached(50, true);
+
 
 
            }
             else if (gamepad1.y == true){
-                robot.rightLift.setPower(-1);
-                robot.leftLift.setPower(-1);
+
                 robot.rightLift.setTargetPosition(-850);
                 robot.leftLift.setTargetPosition(-850);
-               noU = -850;
+                noU = WaitTillTargetReached(50, true);
+
             }
 
             else if(gamepad1.x == true){
-                robot.rightLift.setPower(-1);
-                robot.leftLift.setPower(-1);
-              robot.rightLift.setTargetPosition(-1500);
-              robot.leftLift.setTargetPosition(-1500);
-              noU = -1500;
+
+               robot.rightLift.setTargetPosition(-1300);
+               robot.leftLift.setTargetPosition(-1300);
+               noU = WaitTillTargetReached(10, true);
+
+
             }
             else if (gamepad1.a == true){
-                robot.rightLift.setPower(1);
-                robot.leftLift.setPower(1);
+
               robot.rightLift.setTargetPosition(0);
               robot.leftLift.setTargetPosition(0);
+              noU = WaitTillTargetReached(50, true);
               robot.rClaw.setPosition(0);
               robot.lClaw.setPosition(1);
-              noU = 0;
+
             }
 
             if (gamepad1.left_bumper == true){
@@ -213,7 +215,32 @@ public class TestTeleop extends LinearOpMode {
         //  }
 
     }
+    int WaitTillTargetReached(int tolerance, boolean lock){
+        int leftDifference = Math.abs(robot.leftLift.getTargetPosition() - robot.leftLift.getCurrentPosition());
+        int rightDifference = Math.abs(robot.rightLift.getTargetPosition() - robot.rightLift.getCurrentPosition());
 
+        while(leftDifference > tolerance || rightDifference > tolerance)
+
+        {
+            leftDifference = Math.abs(robot.leftLift.getTargetPosition() - robot.leftLift.getCurrentPosition());
+            rightDifference = Math.abs(robot.rightLift.getTargetPosition() - robot.rightLift.getCurrentPosition());
+
+            robot.leftLift.setPower(0.5);
+            robot.rightLift.setPower(0.5);
+            sleep(1);
+        }
+        int a = robot.leftLift.getCurrentPosition();
+        int c = robot.rightLift.getCurrentPosition();
+        int position = (a + c) / 2;
+
+
+        if(!lock)
+        {
+            robot.leftLift.setPower(0);
+            robot.rightLift.setPower(0);
+        }
+        return(position);
+    }
     private void cycle() {
 
     }
