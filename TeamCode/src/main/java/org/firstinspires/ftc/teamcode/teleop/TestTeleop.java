@@ -143,8 +143,8 @@ public class TestTeleop extends LinearOpMode {
 
             else if(gamepad1.x == true){
 
-                robot.rightLift.setTargetPosition(-1000);
-                robot.leftLift.setTargetPosition(-1000);
+                robot.rightLift.setTargetPosition(-1350);
+                robot.leftLift.setTargetPosition(-1350);
                 positions = WaitTillTargetReached(50, true);
                 rightPosition = positions[0];
                 leftPosition = positions[1];
@@ -213,7 +213,7 @@ public class TestTeleop extends LinearOpMode {
     int[] WaitTillTargetReached(int tolerance, boolean lock){
         int leftDifference = Math.abs(robot.leftLift.getTargetPosition() - robot.leftLift.getCurrentPosition());
         int rightDifference = Math.abs(robot.rightLift.getTargetPosition() - robot.rightLift.getCurrentPosition());
-
+        int check=102930293;
         while(leftDifference > tolerance || rightDifference > tolerance)
 
         {
@@ -223,7 +223,14 @@ public class TestTeleop extends LinearOpMode {
 
             robot.leftLift.setPower(0.5);
             robot.rightLift.setPower(0.5);
+            if (check == robot.rightLift.getCurrentPosition() + robot.leftLift.getCurrentPosition()) {
+                break;
+            }
+            else {
+                check = robot.rightLift.getCurrentPosition() + robot.leftLift.getCurrentPosition();
+            }
             sleep(1);
+
         }
 
         int a = robot.rightLift.getCurrentPosition();
