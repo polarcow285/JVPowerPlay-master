@@ -155,8 +155,8 @@ public class TestTeleop extends LinearOpMode {
 
             else if(gamepad1.x == true){
 
-               robot.rightLift.setTargetPosition(-1300);
-               robot.leftLift.setTargetPosition(-1300);
+               robot.rightLift.setTargetPosition(-1975);
+               robot.leftLift.setTargetPosition(-1975);
                noU = WaitTillTargetReached(10, true);
 
 
