@@ -78,8 +78,11 @@ public class TestTeleop extends LinearOpMode {
 
 
             }
+                //isSpinning = true;
 
-           // else{
+
+
+            // else{
 
                 //robot.intake.setPower(0);
             //}
