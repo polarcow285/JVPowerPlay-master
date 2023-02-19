@@ -18,12 +18,10 @@ public class TestTeleop extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        int liftstart = 0;
-        int liftend = 200;
-        int noU = -5000;
-        boolean isdown = true;
+        int rightPosition = 0;
+        int leftPosition = 0;
+        int[] positions;
         double speed = .9;
-        boolean isSlow = false;
         robot.rightLift.setTargetPosition(0);
         robot.leftLift.setTargetPosition(0);
         robot.rightLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -78,11 +76,8 @@ public class TestTeleop extends LinearOpMode {
 
 
             }
-                //isSpinning = true;
 
-
-
-            // else{
+           // else{
 
                 //robot.intake.setPower(0);
             //}
@@ -98,41 +93,30 @@ public class TestTeleop extends LinearOpMode {
                 //robot.intake.setPower(0);
             }
 
-            if (gamepad1.left_trigger == 1&&noU<0) {
+            if (gamepad1.left_trigger == 1&&rightPosition<0 && leftPosition < 0) {
 
-
-              //robot.lift.setPower(1);
-               // robot.lift.setTargetPosition(liftend);
-
-
-
-                    noU = noU + 5;
-
-                robot.rightLift.setPower(-.4);
-                robot.leftLift.setPower(-.4);
-                robot.rightLift.setTargetPosition(noU);
-                robot.leftLift.setTargetPosition(noU);
-            }
-            else if (gamepad1.right_trigger == 1&&noU>-1800) {
-
-                //robot.lift.setPower(-1);
-                //robot.lift.setTargetPosition(liftstart);
-
-
-                   noU = noU-5;
+                rightPosition += 5;
+                leftPosition += 5;
 
                 robot.rightLift.setPower(.4);
                 robot.leftLift.setPower(.4);
-               robot.rightLift.setTargetPosition(noU);
-               robot.leftLift.setTargetPosition(noU);
+                robot.rightLift.setTargetPosition(rightPosition);
+                robot.leftLift.setTargetPosition(leftPosition);
+            }
+            else if (gamepad1.right_trigger == 1&&rightPosition > -1800 && leftPosition > -1800) {
+
+                rightPosition -= 5;
+                leftPosition -= 5;
+
+                robot.rightLift.setPower(.4);
+                robot.leftLift.setPower(.4);
+                robot.rightLift.setTargetPosition(rightPosition);
+                robot.leftLift.setTargetPosition(leftPosition);
 
 
 
             }
 
-            else {
-              // robot.lift.setPower(0);
-           }
 
 
             if (gamepad1.b == true){
@@ -140,7 +124,9 @@ public class TestTeleop extends LinearOpMode {
 
                 robot.rightLift.setTargetPosition(-350);
                 robot.leftLift.setTargetPosition(-350);
-                noU = WaitTillTargetReached(50, true);
+                positions = WaitTillTargetReached(50, true);
+                rightPosition = positions[0];
+                leftPosition = positions[1];
 
 
 
@@ -149,15 +135,19 @@ public class TestTeleop extends LinearOpMode {
 
                 robot.rightLift.setTargetPosition(-850);
                 robot.leftLift.setTargetPosition(-850);
-                noU = WaitTillTargetReached(50, true);
+                positions = WaitTillTargetReached(50, true);
+                rightPosition = positions[0];
+                leftPosition = positions[1];
 
             }
 
             else if(gamepad1.x == true){
 
-               robot.rightLift.setTargetPosition(-1975);
-               robot.leftLift.setTargetPosition(-1975);
-               noU = WaitTillTargetReached(10, true);
+                robot.rightLift.setTargetPosition(-1350);
+                robot.leftLift.setTargetPosition(-1350);
+                positions = WaitTillTargetReached(50, true);
+                rightPosition = positions[0];
+                leftPosition = positions[1];
 
 
             }
@@ -165,7 +155,9 @@ public class TestTeleop extends LinearOpMode {
 
               robot.rightLift.setTargetPosition(0);
               robot.leftLift.setTargetPosition(0);
-              noU = WaitTillTargetReached(50, true);
+              positions = WaitTillTargetReached(50, true);
+              rightPosition = positions[0];
+              leftPosition = positions[1];
               robot.rClaw.setPosition(0);
               robot.lClaw.setPosition(1);
 
@@ -218,23 +210,33 @@ public class TestTeleop extends LinearOpMode {
         //  }
 
     }
-    int WaitTillTargetReached(int tolerance, boolean lock){
+    int[] WaitTillTargetReached(int tolerance, boolean lock){
         int leftDifference = Math.abs(robot.leftLift.getTargetPosition() - robot.leftLift.getCurrentPosition());
         int rightDifference = Math.abs(robot.rightLift.getTargetPosition() - robot.rightLift.getCurrentPosition());
-
+        int check=102930293;
         while(leftDifference > tolerance || rightDifference > tolerance)
 
         {
+
             leftDifference = Math.abs(robot.leftLift.getTargetPosition() - robot.leftLift.getCurrentPosition());
             rightDifference = Math.abs(robot.rightLift.getTargetPosition() - robot.rightLift.getCurrentPosition());
 
             robot.leftLift.setPower(0.5);
             robot.rightLift.setPower(0.5);
+            if (check == robot.rightLift.getCurrentPosition() + robot.leftLift.getCurrentPosition()) {
+                break;
+            }
+            else {
+                check = robot.rightLift.getCurrentPosition() + robot.leftLift.getCurrentPosition();
+            }
             sleep(1);
+
         }
-        int a = robot.leftLift.getCurrentPosition();
-        int c = robot.rightLift.getCurrentPosition();
-        int position = (a + c) / 2;
+
+        int a = robot.rightLift.getCurrentPosition();
+        int c = robot.leftLift.getCurrentPosition();
+
+        int[] positions = new int[] {a,c};
 
 
         if(!lock)
@@ -242,7 +244,7 @@ public class TestTeleop extends LinearOpMode {
             robot.leftLift.setPower(0);
             robot.rightLift.setPower(0);
         }
-        return(position);
+        return(positions);
     }
     private void cycle() {
 
