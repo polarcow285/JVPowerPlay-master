@@ -102,6 +102,11 @@ public class TestTeleop extends LinearOpMode {
                 robot.leftLift.setPower(.4);
                 robot.rightLift.setTargetPosition(rightPosition);
                 robot.leftLift.setTargetPosition(leftPosition);
+                int a = robot.rightLift.getCurrentPosition();
+                int c = robot.leftLift.getCurrentPosition();
+                telemetry.addLine("current position: " + a + "," + c);
+                telemetry.addLine("target position: " + robot.leftLift.getTargetPosition());
+                telemetry.update();
             }
             else if (gamepad1.right_trigger == 1&&rightPosition > -1800 && leftPosition > -1800) {
 
@@ -112,6 +117,11 @@ public class TestTeleop extends LinearOpMode {
                 robot.leftLift.setPower(.4);
                 robot.rightLift.setTargetPosition(rightPosition);
                 robot.leftLift.setTargetPosition(leftPosition);
+                int a = robot.rightLift.getCurrentPosition();
+                int c = robot.leftLift.getCurrentPosition();
+                telemetry.addLine("current position: " + a + "," + c);
+                telemetry.addLine("target position: " + robot.leftLift.getTargetPosition());
+                telemetry.update();
 
 
 
@@ -125,6 +135,8 @@ public class TestTeleop extends LinearOpMode {
                 robot.rightLift.setTargetPosition(-350);
                 robot.leftLift.setTargetPosition(-350);
                 positions = WaitTillTargetReached(50, true);
+                robot.rightLift.setTargetPosition(rightPosition);
+                robot.leftLift.setTargetPosition(leftPosition);
                 rightPosition = positions[0];
                 leftPosition = positions[1];
 
@@ -136,8 +148,11 @@ public class TestTeleop extends LinearOpMode {
                 robot.rightLift.setTargetPosition(-850);
                 robot.leftLift.setTargetPosition(-850);
                 positions = WaitTillTargetReached(50, true);
+                robot.rightLift.setTargetPosition(rightPosition);
+                robot.leftLift.setTargetPosition(leftPosition);
                 rightPosition = positions[0];
                 leftPosition = positions[1];
+
 
             }
 
@@ -148,6 +163,8 @@ public class TestTeleop extends LinearOpMode {
                 positions = WaitTillTargetReached(50, true);
                 rightPosition = positions[0];
                 leftPosition = positions[1];
+                robot.rightLift.setTargetPosition(rightPosition);
+                robot.leftLift.setTargetPosition(leftPosition);
 
 
             }
@@ -158,8 +175,11 @@ public class TestTeleop extends LinearOpMode {
               positions = WaitTillTargetReached(50, true);
               rightPosition = positions[0];
               leftPosition = positions[1];
+                robot.rightLift.setTargetPosition(rightPosition);
+                robot.leftLift.setTargetPosition(leftPosition);
               robot.rClaw.setPosition(0);
               robot.lClaw.setPosition(1);
+
 
             }
 
@@ -199,6 +219,11 @@ public class TestTeleop extends LinearOpMode {
             // move the arms up and down
             //   if (gamepad2.left_stick_y == true) {
             //  robot.liftArmMotorThing.setPower(-gamepad2.left_stick_y);
+            int a = robot.rightLift.getCurrentPosition();
+            int c = robot.leftLift.getCurrentPosition();
+            telemetry.addLine("current position: " + a + "," + c);
+            telemetry.addLine("target position: " + robot.leftLift.getTargetPosition());
+            telemetry.update();
         }
 
         // moves the manipulator (manipulatorMotor)
@@ -208,6 +233,7 @@ public class TestTeleop extends LinearOpMode {
         //   if (gamepad2.y == true) {
         //     robot.manipulatorMotor.setPower(-.2);
         //  }
+
 
     }
     int[] WaitTillTargetReached(int tolerance, boolean lock){
@@ -230,12 +256,18 @@ public class TestTeleop extends LinearOpMode {
                 check = robot.rightLift.getCurrentPosition() + robot.leftLift.getCurrentPosition();
             }
             sleep(1);
+            int a = robot.rightLift.getCurrentPosition();
+            int c = robot.leftLift.getCurrentPosition();
+            telemetry.addLine("current position: " + a + "," + c);
+            telemetry.addLine("target position: " + robot.leftLift.getTargetPosition());
+            telemetry.update();
 
         }
-
         int a = robot.rightLift.getCurrentPosition();
         int c = robot.leftLift.getCurrentPosition();
-
+        telemetry.addLine("current position: " + a + "," + c);
+        telemetry.addLine("target position: " + robot.leftLift.getTargetPosition());
+        telemetry.update();
         int[] positions = new int[] {a,c};
 
 
@@ -245,6 +277,7 @@ public class TestTeleop extends LinearOpMode {
             robot.rightLift.setPower(0);
         }
         return(positions);
+
     }
     private void cycle() {
 
