@@ -18,54 +18,21 @@ public class TestTeleop extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        int rightPosition = 0;
+        int scissorPosition = 0;
         int leftPosition = 0;
         int[] positions;
         double speed = .9;
-        robot.rightLift.setTargetPosition(0);
-        robot.leftLift.setTargetPosition(0);
-        robot.rightLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.leftLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.scissorLift.setTargetPosition(0);
+        robot.scissorLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
+        robot.scissorLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        robot.rightLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.leftLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         waitForStart();
         boolean isSpinning = false;
 
         while (opModeIsActive()) {
 
-            if (gamepad2.right_bumper == true){
-                robot.wristServo.setPosition(0.05);
-            }
-            else if (gamepad2.left_bumper == true){
-                robot.wristServo.setPosition(0.95);
-            }
-
-            if (gamepad2.a == true){
-                robot.armServo1.setPosition(0.85);
-                robot.armServo2.setPosition(0.15);
-                sleep(250);
-                robot.wristServo.setPosition(0.05);
-            }
-            if(gamepad2.b == true){
-                robot.armServo1.setPosition(.72);
-                robot.armServo2.setPosition(.28);
-                sleep(250);
-                robot.wristServo.setPosition(0.05);
-            }
-            if(gamepad2.y==true){
-                robot.armServo1.setPosition(.28);
-                robot.armServo2.setPosition(.72);
-                sleep(250);
-                robot.wristServo.setPosition(0.95);
-            }
-            if(gamepad2.x==true){
-                robot.armServo1.setPosition(0.15);
-                robot.armServo2.setPosition(0.85);
-                sleep(100);
-                robot.wristServo.setPosition(0.95);
             }
 
 
@@ -93,25 +60,19 @@ public class TestTeleop extends LinearOpMode {
                 //robot.intake.setPower(0);
             }
 
-            if (gamepad1.left_trigger == 1&&rightPosition<0 && leftPosition < 0) {
+            if (gamepad1.left_trigger == 1&&scissorPosition<0) {
 
-                rightPosition += 5;
-                leftPosition += 5;
+                scissorPosition += 5;
+                robot.scissorLift.setPower(.4);
+                robot.scissorLift.setTargetPosition(scissorPosition);
 
-                robot.rightLift.setPower(.4);
-                robot.leftLift.setPower(.4);
-                robot.rightLift.setTargetPosition(rightPosition);
-                robot.leftLift.setTargetPosition(leftPosition);
             }
-            else if (gamepad1.right_trigger == 1&&rightPosition > -1800 && leftPosition > -1800) {
+            else if (gamepad1.right_trigger == 1&&scissorPosition > -1800) {
 
-                rightPosition -= 5;
-                leftPosition -= 5;
+                scissorPosition -= 5;
+                robot.scissorLift.setPower(.7);
+                robot.scissorLift.setTargetPosition(scissorPosition);
 
-                robot.rightLift.setPower(.4);
-                robot.leftLift.setPower(.4);
-                robot.rightLift.setTargetPosition(rightPosition);
-                robot.leftLift.setTargetPosition(leftPosition);
 
 
 
@@ -143,8 +104,8 @@ public class TestTeleop extends LinearOpMode {
 
             else if(gamepad1.x == true){
 
-                robot.rightLift.setTargetPosition(-1350);
-                robot.leftLift.setTargetPosition(-1350);
+                robot.rightLift.setTargetPosition(-1400);
+                robot.leftLift.setTargetPosition(-1400);
                 positions = WaitTillTargetReached(50, true);
                 rightPosition = positions[0];
                 leftPosition = positions[1];
@@ -152,7 +113,6 @@ public class TestTeleop extends LinearOpMode {
 
             }
             else if (gamepad1.a == true){
-
               robot.rightLift.setTargetPosition(0);
               robot.leftLift.setTargetPosition(0);
               positions = WaitTillTargetReached(50, true);
@@ -211,38 +171,34 @@ public class TestTeleop extends LinearOpMode {
 
     }
     int[] WaitTillTargetReached(int tolerance, boolean lock){
-        int leftDifference = Math.abs(robot.leftLift.getTargetPosition() - robot.leftLift.getCurrentPosition());
-        int rightDifference = Math.abs(robot.rightLift.getTargetPosition() - robot.rightLift.getCurrentPosition());
+        int scissorDifference = Math.abs(robot.scissorLift.getTargetPosition() - robot.scissorLift.getCurrentPosition());
         int check=102930293;
-        while(leftDifference > tolerance || rightDifference > tolerance)
+        while(scissorDifference > tolerance)
 
         {
 
-            leftDifference = Math.abs(robot.leftLift.getTargetPosition() - robot.leftLift.getCurrentPosition());
-            rightDifference = Math.abs(robot.rightLift.getTargetPosition() - robot.rightLift.getCurrentPosition());
-
-            robot.leftLift.setPower(0.5);
-            robot.rightLift.setPower(0.5);
-            if (check == robot.rightLift.getCurrentPosition() + robot.leftLift.getCurrentPosition()) {
+            scissorDifference = Math.abs(robot.scissorLift.getTargetPosition() - robot.scissorLift.getCurrentPosition());
+            if (robot.scissorLift.getCurrentPosition() == check) {
                 break;
             }
             else {
-                check = robot.rightLift.getCurrentPosition() + robot.leftLift.getCurrentPosition();
+
+                 check = robot.scissorLift.getCurrentPosition();
             }
+            robot.scissorLift.setPower(-1);
+
             sleep(1);
 
         }
 
-        int a = robot.rightLift.getCurrentPosition();
-        int c = robot.leftLift.getCurrentPosition();
+        int a = robot.scissorLift.getCurrentPosition();
 
-        int[] positions = new int[] {a,c};
+        int[] positions = new int[] {a};
 
 
         if(!lock)
         {
-            robot.leftLift.setPower(0);
-            robot.rightLift.setPower(0);
+            robot.scissorLift.setPower(0);
         }
         return(positions);
     }

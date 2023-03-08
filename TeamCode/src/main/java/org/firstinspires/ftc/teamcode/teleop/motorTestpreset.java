@@ -107,7 +107,7 @@ public class motorTestpreset extends LinearOpMode {
 
 
             }
-            else if (gamepad1.y == true){
+            if (gamepad1.y == true){
                 robot.rightLift.setPower(-.8);
                 robot.leftLift.setPower(-.8);
                 robot.rightLift.setTargetPosition(-850);
@@ -115,14 +115,14 @@ public class motorTestpreset extends LinearOpMode {
                 noU = -850;
             }
 
-            else if(gamepad1.x == true){
+            if(gamepad1.x == true){
                 robot.rightLift.setPower(-.8);
                 robot.leftLift.setPower(-.8);
                 robot.rightLift.setTargetPosition(-1600);
                 robot.leftLift.setTargetPosition(-1600);
                 noU = -1600;
             }
-            else if (gamepad1.a == true){
+            if (gamepad1.a == true){
                 robot.rightLift.setPower(0.5);
                 robot.leftLift.setPower(0.5);
                 robot.rightLift.setTargetPosition(0);
